@@ -12,7 +12,31 @@ export class RecipeItemComponent {
       name: 'Recipe One',
       description: 'Some description for recipe One',
       imgUrl:
-        'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg',
+        'C:/Materialet/MEAN Fullstack/Angular_FullStack/images/BC-114.jpg',
+    },
+    {
+      name: 'Recipe Two',
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit.Qui architecto eaque eum numquam?',
+      imgUrl: 'C:/Materialet/MEAN Fullstack/Angular_FullStack/images/BC-55.jpg',
+    },
+    {
+      name: 'Recipe Three',
+      description: 'Quasi minima eveniet quam hic, doloribus quia culpa!',
+      imgUrl: 'C:/Materialet/MEAN Fullstack/Angular_FullStack/images/BC-55.jpg',
+    },
+    {
+      name: 'Recipe Four',
+      description: 'Quasi minima eveniet quam hic, doloribus quia culpa!',
+      imgUrl:
+        'C:/Materialet/MEAN Fullstack/Angular_FullStack/images/Fried+Chicken+Sandwich+_+South+Minneapolis+_+Book+Club+Restaurant.jpg',
+    },
+    {
+      name: 'Recipe Five',
+      description: 'Quasi minima eveniet quam hic, doloribus quia culpa!',
+      imgUrl:
+        'C:/Materialet/MEAN Fullstack/Angular_FullStack/images/Paloma+Cocktail+_+South+Minneapolis+_+Book+Club+Restaurant.jpg',
     },
   ];
+  recipe!: any;
 }

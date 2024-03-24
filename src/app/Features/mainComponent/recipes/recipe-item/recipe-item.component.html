@@ -7,50 +7,18 @@
     <div class="col-xs-12">
         <a href="#" class="list-group-item clearfix">
             <div class="pull-left">
-                <h4 class="list-group-item-heading">Recipe Name</h4>
-                <p class="list-group-item-text">Recipe Description</p>
+                <p *ngFor='let recipe of recipes'></p>
+                <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+                <p class="list-group-item-text">{{recipe.description}}
+                </p><br>
+
             </div>
             <span class="pull-right">
-                <img src="" alt="" class="img-responsive" style="max-height: 20px;">
+                <p *ngFor='let recipe of recipes'></p>
+                <img src="{{recipe.imgUrl}}" alt="" class="img-responsive" style="max-height: 20px;">
+
             </span>
         </a>
     </div>
 </div>
 <hr _ngcontent-ng-c3987313232="">
-<div class="row">
-    <div class="col-xs-12">
-        <button class="btn btn-success">New Recipe</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <a href="#" class="list-group-item clearfix">
-            <div class="pull-left">
-                <h4 class="list-group-item-heading">Recipe Name</h4>
-                <p class="list-group-item-text">Recipe Description</p>
-            </div>
-            <span class="pull-right">
-                <img src="" alt="" class="img-responsive" style="max-height: 20px;">
-            </span>
-        </a>
-    </div>
-</div>
-<hr _ngcontent-ng-c3987313232="">
-<div class="row">
-    <div class="col-xs-12">
-        <button class="btn btn-success">New Recipe</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <a href="#" class="list-group-item clearfix">
-            <div class="pull-left">
-                <h4 class="list-group-item-heading">Recipe Name</h4>
-                <p class="list-group-item-text">Recipe Description</p>
-            </div>
-            <span class="pull-right">
-                <img src="" alt="" class="img-responsive" style="max-height: 40px;">
-            </span>
-        </a>
-    </div>
-</div>
