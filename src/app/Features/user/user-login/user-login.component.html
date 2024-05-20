@@ -1,0 +1,34 @@
+<section class="login" id="login">
+  <div class="head">
+    <h1 class="company">Our National BlogFilm</h1>
+  </div>
+  <p class="msg">Welcome back!</p>
+  <div class="form">
+    <form #signInForm="ngForm" (ngSubmit)="loginUser(signInForm)">
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Username" id="username" class="text"
+          aria-describedby="emailHelp" name="emailAddressField" ngModel required #emailAddressField="ngModel">
+        <small class="form-text text-muted" *ngIf="emailAddressField.touched&&!emailAddressField.valid">User Please
+          enter email address</small>
+        <small class="form-text text-muted" *ngIf="emailAddressField.touched&&!emailAddressField.invalid">It's written
+          in unRegular Form</small>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder=".........." class="password" name="passwordField"
+          ngModel required #passwordField="ngModel">
+        <small class="form-text text-muted" *ngIf="passwordField.touched&&!passwordField.value">User please enter the
+          password</small>
+        <small class="form-text text-muted" *ngIf="passwordField.touched&&!passwordField.invalid">It's invalid!</small>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="checkOne" name="termsField" ngModel>
+        <label class="form-check-label" for="checkOne">Agree to Terms and Condition</label>
+      </div>
+      <button type="button" class="btn-login" id="do-login" class="btn btn-primary" routerLink="/homepage"
+        [disabled]="!signInForm.valid">Login</button>
+      <button type="button" class="forgot" class="btn btn-primary" [disabled]="!signInForm.valid"
+        routerLink="user/update/:id">Forgot</button>
+    </form>
+
+  </div>
+</section>

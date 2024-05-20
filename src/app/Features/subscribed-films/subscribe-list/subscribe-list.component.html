@@ -1,0 +1,6 @@
+<app-subscribed-items *ngFor="let filmSubscripted of allFilmsSub"
+  (filmSubscribed)="selectedItemsByAdmin(filmSubscripted)" (filmFreeSubscribed)="selectedFreeSub(id,filmSubscripted)"
+  (filmPaidSubscribed)="selectedPaidSub(id, filmSubscripted)" [filmSub]="filmSubscripted"
+  [filmFreeSub]="filmSubscripted" [filmPaidSub]="filmSubscripted" [id]="filmSubscripted.customerId"
+  [idFilm]="filmSubscripted.filmId" (filmSubscribed)="selectFilmsReviewsByUserId(id,filmSubscripted)"
+  (filmPaidSubscribed)="selectedUserReviewsByFilmId(idF)"></app-subscribed-items>

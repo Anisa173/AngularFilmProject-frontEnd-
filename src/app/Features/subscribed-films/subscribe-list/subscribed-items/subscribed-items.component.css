@@ -1,0 +1,23 @@
+.container::after .row::after {
+  content: " ";
+  clear: both;
+  display: table;
+}
+.column {
+  float: left;
+  width: 40%;
+  margin-bottom: 16px;
+  padding: 0px 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 15px;
+  padding: 10px;
+}
+.container {
+  padding: 0 16px;
+}
+.title {
+  color: grey;
+}

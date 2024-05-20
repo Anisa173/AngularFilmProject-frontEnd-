@@ -1,0 +1,104 @@
+<div class="container text-center">
+  <h1 class="display-5">Registration of payment's methods</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        <label for="fName">MethodApp fullName:</label>
+        <input type="text" id="fName" formControlName="methodAppName" class="form-control" placeHolder="googleApp"
+          required>
+        <span *ngIf="paymentForm.get('methodAppName')?.touched && paymentForm.get('methodAppName')?.invalid">It's not
+          writen in correct form</span>
+
+        <span
+          *ngIf="paymentForm.get('methodAppName')?.touched && paymentForm.get('methodAppName')?.hasError('required')">It's
+          required</span>
+
+        <label for="appUrl">Put url to complete card's dataPayment:</label>
+        <input type="text" id="appUrl" formControlName="urlApp" class="form-control"
+          placeholder="https://payments.google.com/gp/w/home/signup" required>
+        <span *ngIf="paymentForm.get('urlApp')?.hasError('required') && !paymentForm.get('urlApp')?.pristine">It's
+          required</span>
+        <span *ngIf="paymentForm.get('urlApp')?.dirty && paymentForm.get('urlApp')?.invalid">It's not written
+          in regular form</span>
+
+
+        <label for="logoUrl">Copyright imageApp</label>
+        <input type="string" formControlName="logoAppUrl" id="logoUrl" class="form-control">
+        <span *ngIf="paymentForm.get('logoAppUrl')?.dirty && paymentForm.get('logoAppUrl')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="paymentForm.get('logoAppUrl')?.touched && paymentForm.get('logpAppUrl')?.hasError('required')">It's
+          required</span>
+
+        <label for="pm">PhoneNo</label>
+        <input type="string" formControlName="pmFeeCharged" id="pm" class="form-control" required>
+        <span *ngIf="paymentForm.get('pmFeeCharged')?.dirty && paymentForm.get('pmFeeCharged')?.invalid">It's
+          invalid!</span>
+        <span
+          *ngIf="paymentForm.get('pmFeeCharged')?.touched && paymentForm.get('pmFeeCharged')?.hasError('required')">It's
+          required</span>
+
+        <label for="currency">Currency Type</label>
+        <input type="text" formControlName="currency" id="currency" class="form-control" required>
+        <span *ngIf="paymentForm.get('currency')?.dirty && paymentForm.get('currency')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="paymentForm.get('currency')?.touched && paymentForm.get('currency')?.hasError('required')">It's
+          required</span>
+        <button type="button" *ngIf="authSer.isLoggedIn;else noAccess" [routerLink]="['/paymentmethods/all']"
+          class="registerBtn" [disabled]="!paymentForm.valid" on-click="createPaymentMethod(payMethod)">Create</button>
+      </form>
+    </div>
+  </div>
+</div><ng-template #noAccess>
+  <h4 class="warning">Access Denied</h4>
+</ng-template>
+<div class="container text-center">
+  <h1 class="display-5">Update datas of payment's methods</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form [formGroup]="paymentForm" (ngChange)="onSubmit()">
+        <label for="fName">MethodApp fullName:</label>
+        <input type="text" id="fName" formControlName="methodAppName" class="form-control" placeHolder="googleApp"
+          required>
+        <span *ngIf="paymentForm.get('methodAppName')?.touched && paymentForm.get('methodAppName')?.invalid">It's not
+          writen in correct form</span>
+
+        <span
+          *ngIf="paymentForm.get('methodAppName')?.touched && paymentForm.get('methodAppName')?.hasError('required')">It's
+          required</span>
+
+        <label for="appUrl">Put url to complete card's dataPayment:</label>
+        <input type="text" id="appUrl" formControlName="urlApp" class="form-control"
+          placeholder="https://payments.google.com/gp/w/home/signup" required>
+        <span *ngIf="paymentForm.get('urlApp')?.hasError('required') && !paymentForm.get('urlApp')?.pristine">It's
+          required</span>
+        <span *ngIf="paymentForm.get('urlApp')?.dirty && paymentForm.get('urlApp')?.invalid">It's not written
+          in regular form</span>
+
+
+        <label for="logoUrl">Copyright imageApp</label>
+        <input type="string" formControlName="logoAppUrl" id="logoUrl" class="form-control">
+        <span *ngIf="paymentForm.get('logoAppUrl')?.dirty && paymentForm.get('logoAppUrl')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="paymentForm.get('logoAppUrl')?.touched && paymentForm.get('logpAppUrl')?.hasError('required')">It's
+          required</span>
+
+        <label for="pm">PhoneNo</label>
+        <input type="string" formControlName="pmFeeCharged" id="pm" class="form-control" required>
+        <span *ngIf="paymentForm.get('pmFeeCharged')?.dirty && paymentForm.get('pmFeeCharged')?.invalid">It's
+          invalid!</span>
+        <span
+          *ngIf="paymentForm.get('pmFeeCharged')?.touched && paymentForm.get('pmFeeCharged')?.hasError('required')">It's
+          required</span>
+
+        <label for="currency">Currency Type</label>
+        <input type="text" formControlName="currency" id="currency" class="form-control" required>
+        <span *ngIf="paymentForm.get('currency')?.dirty && paymentForm.get('currency')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="paymentForm.get('currency')?.touched && paymentForm.get('currency')?.hasError('required')">It's
+          required</span>
+        <button type="button" *ngIf="authSer.isLoggedIn;else noAccess" [routerLink]="['/paymentmethods/all']"
+          class="registerBtn" [disabled]="!paymentForm.valid" on-click=" updatePaymentMethodds(payMethod)">Edit</button>
+      </form>
+    </div>
+  </div>
+</div>

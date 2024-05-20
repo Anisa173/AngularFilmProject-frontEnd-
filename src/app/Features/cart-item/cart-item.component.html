@@ -1,0 +1,5 @@
+<app-cart-item-detail *ngIf="cartI;else notCartItem" (newItemInPay)="onAdded($event)" [newCartItem]="cartI"
+  [cartItemId]="cartI.ciId"></app-cart-item-detail><ng-template #notCartItem>
+  <h2 class="warning"> Now,It isn't any cartItem processing!!</h2>
+</ng-template>
+<app-cart-item-list (cartItemList)="cartIs=$event" [cItemList]="cartIs"></app-cart-item-list>

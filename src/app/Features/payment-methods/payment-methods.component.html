@@ -1,0 +1,6 @@
+<app-pay-method-details *ngIf="payMethod;else noPayMethod"
+  (contractedEpayMethods)="onAdded($event)"></app-pay-method-details><ng-template #noPayMethod>
+  <h2 class="warning">No e-payMethod exist!</h2>
+</ng-template>
+<app-pay-method-list (paymentList)="payMethod=$event" [pmList]=" payMethods"
+  [selectMethods]="payMethod"></app-pay-method-list>

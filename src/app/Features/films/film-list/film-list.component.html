@@ -1,0 +1,24 @@
+<div class="dropdown">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMnu1">
+    <li><a>
+        <app-film-item *ngFor="let itemFilm of allItemSelected" [selectedFreeItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemFreeSelected)="onSelectedFreeFilms(itemFilm,categoryId)"
+          (deletedItem)="onDeleted(allItemSelected)">
+          {{itemFilm.filmTitle}}
+        </app-film-item>
+      </a></li>
+  </ul>
+</div>
+<div class="dropdown">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMnu1">
+    <li><a *ngIf="authService.isLoggedIn; else notAuth">
+        <app-film-item *ngFor="let itemFilm of allItemSelected" [selectedPaidItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemPaidSelected)="onSelectedPaidFilms(itemFilm,categoryId)"
+          (deletedItem)="onDeleted(allItemSelected)">
+          {{itemFilm.filmTitle}}
+        </app-film-item>
+      </a></li>
+  </ul>
+</div><ng-template #notAuth>
+  <h3 class="warning">No Access!</h3>
+</ng-template>

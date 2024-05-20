@@ -1,0 +1,26 @@
+<section class="login" id="login">
+  <div class="head">
+    <h1 class="company">Our National BlogFilm</h1>
+  </div>
+  <p class="msg">Welcome back!</p>
+  <div class="form">
+    <form #addedCategory="ngForm" (ngSubmit)="(addedCategory)">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Film_CategoryName" id="nameField" class="text"
+          name="nameField" ngModel required #nameField="ngModel">
+        <small class="form-text text-muted" *ngIf="nameField.touched&&!nameField.valid">User
+          enter categoryName</small>
+        <small class="form-text text-muted" *ngIf="nameField.touched&&!nameField.invalid">It's written
+          in unRegular Form</small>
+      </div>
+
+      <button type="button" class="btn-login" *ngIf="userAuthenticated.isLoggedIn;else noCategoryAdded" id="do-login"
+        class="btn btn-primary" [disabled]="!addedCategory.valid" [routerLink]="['FilmCategory/read/:id']"
+        on-click="add(addFilmcategory)">Add Category</button>
+
+
+    </form>
+  </div>
+</section><ng-template #noCategoryAdded>
+  <h3 class='warning'>Access denied!Please admin re-login!</h3>
+</ng-template>

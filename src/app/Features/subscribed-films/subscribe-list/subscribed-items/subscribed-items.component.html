@@ -1,0 +1,67 @@
+<a [routerLink]="['/reviews/{idFilm}']" (click)="onSelectedByItemFilmReviews(id, idFilm)"
+  *ngIf="authService.isLoggedIn;else noAccess">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>{{filmSub.filmTitle}}</h2>
+        <h4 class="title">{{filmSub.onlineCost}}</h4>
+        <h4>{{filmSub.fullName}}</h4>
+
+        <h3>It's reviews in:</h3>
+        <h3 class="title">{{filmSub.reviews}}</h3>
+      </div>
+    </div>
+  </div>
+</a><ng-template #noAccess>
+  <h3 class="warning">Access Denied</h3>
+</ng-template>
+<a [routerLink]="['/reviews/{id}']" (click)="onSelectedByItemUserReviews(id, idFilm)"
+  *ngIf="authService.isLoggedIn;else noAccess">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>{{filmSub.filmTitle}}</h2>
+        <h4 class="title">{{filmSub.onlineCost}}</h4>
+        <h4>{{filmSub.fullName}}</h4>
+
+        <h3>It's reviews in:</h3>
+        <h3 class="title">{{filmSub.reviews}}</h3>
+      </div>
+    </div>
+  </div>
+</a><ng-template #noAccess>
+  <h3 class="warning">Access Denied</h3>
+</ng-template>
+
+
+
+
+
+<a [routerLink]="['subscribedFilm/add/free/{userId}/films']" (click)="onSelectedFree(id, idFilm)"
+  *ngIf="authService.isLoggedIn;else noAccess">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>{{filmSub.filmTitle}}</h2>
+        <h4 class="title">{{filmSub.onlineCost}}</h4>
+        <h4>{{filmSub.fullName}}</h4>
+        <h3>It's reviews in:</h3>
+        <h3 class="title">{{filmSub.reviews}}</h3>
+      </div>
+    </div>
+  </div>
+</a>
+<a [routerLink]="['subscribedFilms/add/paid/{userId}/films']" (click)=" onSelectedPaid(id, idFilm)"
+  *ngIf="authService.isLoggedIn;else noAccess">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>{{filmSub.filmTitle}}</h2>
+        <h4 class="title">{{filmSub.onlineCost}}</h4>
+        <h4>{{filmSub.fullName}}</h4>
+        <h3>It's reviews in:</h3>
+        <h3 class="title">{{filmSub.reviews}}</h3>
+      </div>
+    </div>
+  </div>
+</a>

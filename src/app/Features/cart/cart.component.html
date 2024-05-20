@@ -1,0 +1,8 @@
+<app-cart-list *ngIf="carts;else noCartProcessed" (cartList)="carts=$event" [cart]="cart"
+  [carts]="carts"></app-cart-list><ng-template #noCartProcessed>
+  <h4 class="warning">There arn't any carts processed!</h4>
+</ng-template>
+<app-cart-details *ngIf="cart;else notAddedCart" (cartPayment)="onAdded($event)" [cartP]="cart"
+  [cartId]="cart.cartId"></app-cart-details><ng-template #notAddedCart>
+  <h3 class="warning">No Cart added</h3>
+</ng-template>

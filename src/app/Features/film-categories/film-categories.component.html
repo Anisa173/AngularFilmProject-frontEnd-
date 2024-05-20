@@ -1,0 +1,6 @@
+<app-film-category-details *ngIf="filmCateg;else noFilmCateg" [addFilmcategory]=" filmCateg"
+  (addedCategory)="onAdded($event)"></app-film-category-details><ng-template #noFilmCateg>
+  <h3 class="warning">No category film is found!!</h3>
+</ng-template>
+<app-film-category-list (allCategories)="filmCateg=$event" [filmCtegori]="filmCategs"
+  [filmCategory]="filmCateg"></app-film-category-list>

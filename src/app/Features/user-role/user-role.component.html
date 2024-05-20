@@ -1,0 +1,16 @@
+<div>
+  <fieldset>
+    <legend>As a Guest make your choice!</legend>
+    <form #choice="ngForm">
+
+      <input type="radio" id="freeF" name="user" /> <label for="freeF"><a [routerLink]="['Films/all/free']">Continue to
+          see free Films!</a></label>
+      <br /><br /><br /><br />
+
+      <input type="radio" name="user" id="userLogin" /><label for="userLogin"><a routerLink="user/login">Continue as an
+          authenticated
+          user!</a></label>
+
+    </form>
+  </fieldset>
+</div>

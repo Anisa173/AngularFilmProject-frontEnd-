@@ -1,0 +1,112 @@
+<main class="cd_main">
+  <div id="container">
+    <div id="body_header">
+      <h1>Films Registration</h1>
+    </div>
+    <form #createFilm="ngForm" (ngSubmit)="onSubmit(createFilm)">
+      <fieldset>
+
+        <legend>Film details</legend>
+
+        <label for="fname">FilmTitle* :</label>
+        <input type="text" id="fname" name="filmTitle" required ngModel #filmTitle="ngModel" pattern="[a-zA-Z0-9]+">
+        <small class="form-text text-muted" *ngIf="filmTitle.touched && filmTitle.invalid">It's invalid!!Try
+          again</small><br>
+        <label for="date">Release_Date* :</label>
+        <input type="date" name="dateRelease" required ngModel #releaseDate="ngModel"><br>
+
+        <label for="tUrl">Trialer URL* :</label>
+        <input type="text" id="tUrl" name="url" required ngModel #url="ngModel">
+        <small class="form-text text-muted" *ngIf="url.touched && url.invalid">It's invalid!!Try again</small><br>
+
+        <label for="fUrl">Film URL* :</label>
+        <input type="text" id="fUrl" name="fUrl" required ngModel #fUrl="ngModel">
+        <small class="form-text text-muted" *ngIf="fUrl.touched && fUrl.invalid">It's invalid!!Try again</small><br>
+
+        <label for="durationTime">Movie Duration* :</label>
+        <input type="text" id="durationTime" name="mDuration" required ngModel #mDuration="ngModel">
+        <small class="form-text text-muted" *ngIf="mDuration.touched && mDuration.invalid">It's invalid!!Try
+          again</small><br>
+
+        <label for="OnlineCost">Film's cost on Payment* :</label>
+        <input type="number" id="OnlineCost" name="fCost" required ngModel #cost="ngModel">
+        <small class="form-text text-muted" *ngIf="cost.touched && cost.invalid">Try again</small><br>
+
+        <label for="fdescription">Film Description :</label>
+        <textarea id="fdescription" name="filmDescription" placeholder="Describe move" required ngModel
+          #descriptionMovie="ngModel"></textarea>
+
+        <label for="category">Choose filmCategory* :</label>
+        <select id="category" name="filmCategory" required ngModel #filmC="ngModel">
+          <option *ngFor="let fc of category" [value]="fc.idCtg">{{fc.categoryName}}</option>
+        </select>
+
+        <label for="sponsorId">Sponsor of Film* :</label>
+        <input type="text" id="sponsorId" name="sponsorN" required ngModel #sponsorN="ngModel">
+        <small class="form-text text-muted" *ngIf="sponsorN.touched && sponsorN.invalid">It's invalid!!Try
+          again</small><br>
+
+        <button type="button" *ngIf="authService.isLoggedIn;else noFilmAdded" [disabled]="!createFilm.valid"
+          [routerLink]="['Films/:categoryId']" (click)="addFilm(filmModified)">Create</button><ng-template #noFilmAdded>
+          <h3 class="warning">Access Denied!Re-login!</h3>
+        </ng-template>
+      </fieldset>
+    </form>
+  </div>
+</main>
+
+<main class="cd_main">
+  <div id="container">
+    <div id="body_header">
+      <h1>Modify film datas</h1>
+    </div>
+    <form #createFilm="ngForm" (ngChange)=onSubmit(createFilm)>
+      <fieldset>
+
+        <label for="fname">FilmTitle* :</label>
+        <input type="text" id="fname" name="filmTitle" required ngModel #filmTitle="ngModel" pattern="[a-zA-Z0-9]+">
+        <small class="form-text text-muted" *ngIf="filmTitle.touched && filmTitle.invalid">It's invalid!!Try
+          again</small><br>
+        <label for="date">Release_Date* :</label>
+        <input type="date" name="dateRelease" required ngModel #releaseDate="ngModel"><br>
+
+        <label for="tUrl">Trialer URL* :</label>
+        <input type="text" id="tUrl" name="url" required ngModel #url="ngModel">
+        <small class="form-text text-muted" *ngIf="url.touched && url.invalid">It's invalid!!Try again</small><br>
+
+        <label for="fUrl">Film URL* :</label>
+        <input type="text" id="fUrl" name="fUrl" required ngModel #fUrl="ngModel">
+        <small class="form-text text-muted" *ngIf="fUrl.touched && fUrl.invalid">It's invalid!!Try again</small><br>
+
+        <label for="durationTime">Movie Duration* :</label>
+        <input type="text" id="durationTime" name="mDuration" required ngModel #mDuration="ngModel">
+        <small class="form-text text-muted" *ngIf="mDuration.touched && mDuration.invalid">It's invalid!!Try
+          again</small><br>
+
+        <label for="OnlineCost">Film's cost on Payment* :</label>
+        <input type="number" id="OnlineCost" name="fCost" required ngModel #cost="ngModel">
+        <small class="form-text text-muted" *ngIf="cost.touched && cost.invalid">Try again</small><br>
+
+        <label for="fdescription">Film Description :</label>
+        <textarea id="fdescription" name="filmDescription" placeholder="Describe move" required ngModel
+          #descriptionMovie="ngModel"></textarea>
+
+        <label for="category">Choose filmCategory* :</label>
+        <select id="category" name="filmCategory" required ngModel #filmC="ngModel">
+          <option *ngFor="let fc of category" [value]="fc.idCtg">{{fc.categoryName}}</option>
+        </select>
+
+        <label for="sponsorId">Sponsor of Film* :</label>
+        <input type="text" id="sponsorId" name="sponsorN" required ngModel #sponsorN="ngModel">
+        <small class="form-text text-muted" *ngIf="sponsorN.touched && sponsorN.invalid">It's invalid!!Try
+          again</small><br>
+
+        <button type="button" *ngIf="authService.isLoggedIn;else noFilmUpdated" [disabled]="!createFilm.valid"
+          [routerLink]="['/read/:categoryId/films']" (click)="updateFilm(filmModified)">Edit</button><ng-template
+          #noFilmUpdated>
+          <h3 class="warning">Access Denied!no film can be updated!</h3>
+        </ng-template>
+      </fieldset>
+    </form>
+  </div>
+</main>

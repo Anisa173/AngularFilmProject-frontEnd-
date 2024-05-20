@@ -1,0 +1,11 @@
+<main class="cd_main">
+  <nav class="navbar">
+    <a href="#" class="navbar-logo">National Film Blog</a>
+    <ul class="navbar-links">
+      <li class="navbar-dropdown"><a>
+          <app-film-category-item *ngFor="let filmCategory of filmCtegori" [filmC]="filmCategory"
+            (itemDetails)="onCategories(filmCategory)"
+            (deletedItem)="deleteItem(filmCtegori)">{{filmCategory.categoryName}}</app-film-category-item></a></li>
+    </ul>
+  </nav>
+</main>

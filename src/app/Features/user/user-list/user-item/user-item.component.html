@@ -1,0 +1,21 @@
+<a class="list-group-item clearfix" (click)="onItemClick(id)" *ngIf="authService.isLoggedIn;else noAccess"
+  routerLink="user/update/{id}">
+  <div class="pull-left">
+    <div *ngIf="user$ | async as user">
+      <h3 class="list-group-item-heading">{{userI.fullName}}</h3>
+      <h4 class="list-group-item-text">{{userI.email}}</h4>
+      <h4 class="list-group-item-text">{{userI.password}}</h4>
+      <h4 class="list-group-item-text">{{userI.telephoneNo}}</h4>
+      <h4 class="list-group-item-text">{{userI.address}}</h4>
+      <h4 class="list-group-item-text">{{userI.gender}}</h4>
+      <h4 class="list-group-item-text">{{userI.userRole}}</h4>
+      <h4 class="list-group-item-text">{{userI.personalIdentityNo}}</h4>
+      <h4 class="list-group-item-text">{{userI.age}}</h4>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</a><ng-template #noAccess>
+  <h2 class="warning">Access Denied</h2>
+</ng-template>
+<button class="delete" *ngIf="authService.isLoggedIn;else noAccess" routerLink="user/all"
+  (click)="onDeleted(id)">Delete</button>

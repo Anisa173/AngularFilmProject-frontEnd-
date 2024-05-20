@@ -1,0 +1,100 @@
+//Customer
+<a (click)="getFreeFilmDetails(idFilm, categoryId)">
+  <div class="column">
+    <div class="card">
+      <video [src]="selectedFreeItem.trialUrl" controls></video>
+      <div class="container">
+        <h2>{{selectedFreeItem.filmTitle}}</h2>
+        <p>{{selectedFreeItem.categoryName}}</p>
+        <p>{{selectedFreeItem.description}}
+        <h4>It's published in:</h4>
+        <p>{{selectedFreeItem.releaseDate}}</p>
+        <p class="title">{{selectedFreeItem.movieDuration}}</p>
+        <p class="title">{{selectedFreeItem.onlineCost}}</p>
+        <h4>Movie is Sponsored by:</h4>
+        <p class="title">{{selectedFreeItem.filmSponsor}}</p>
+        <a class="button" target="_parent" [routerLink]="['add/free/{userId}/films']"><video
+            [src]="selectedFreeItem.filmUrl" controls>FullMovie</video>Click to
+          enjoy Free Movie</a>
+
+      </div>
+    </div>
+  </div>
+</a>
+//Admin
+<a (click)="getFreeFilmDetails(idFilm, categoryId)" *ngIf="authService.isLoggedIn;else nodataSelected">
+  <div class="column">
+    <div class="card">
+      <video [src]="selectedFreeItem.trialUrl" controls></video>
+      <div class="container">
+        <h2>{{selectedFreeItem.filmTitle}}</h2>
+        <p>{{selectedFreeItem.categoryName}}</p>
+        <p>{{selectedFreeItem.description}}
+        <h4>It's published in:</h4>
+        <p>{{selectedFreeItem.releaseDate}}</p>
+        <p class="title">{{selectedFreeItem.movieDuration}}</p>
+        <p class="title">{{selectedFreeItem.onlineCost}}</p>
+        <h4>Movie is Sponsored by:</h4>
+        <p class="title">{{selectedFreeItem.filmSponsor}}</p>
+        <button class="button" *ngIf="authService.isLoggedIn;else nodataDeleted" routerLink="/free/{categoryId}"
+          (click)="deleteItem(idFilm, categoryId)">Delete</button>
+      </div>
+    </div>
+  </div>
+</a><ng-template #nodataSelected>
+  <h3 class="warning">Access Denied!No data selected!</h3>
+</ng-template><ng-template #nodataDeleted>
+  <h3 class="warning">Access Denied!No data selected!</h3>
+</ng-template>
+
+//Customer
+<a (click)="getPaidFilmDetails(idFilm, categoryId)" *ngIf="authService.isLoggedIn;else islogout">
+  <div class="column">
+    <div class="card">
+      <video [src]="selectedPaidItem.trialUrl" controls></video>
+      <div class="container">
+        <h2>{{selectedPaidItem.filmTitle}}</h2>
+        <p>{{selectedPaidItem.categoryName}}</p>
+        <p>{{selectedPaidItem.description}}
+        <h4>It's published in:</h4>
+        <p>{{selectedPaidItem.releaseDate}}</p>
+        <p class="title">{{selectedPaidItem.movieDuration}}</p>
+        <p class="title">{{selectedPaidItem.onlineCost}}</p>
+        <h4>Movie is Sponsored by:</h4>
+        <p class="title">{{selectedFreeItem.filmSponsor}}</p>
+        <a [routerLink]="['paymentmethods/all']" *ngIf="authService.isLoggedIn;else islogout" class="button">Enjoy the
+          greatest Movie
+          on payment!</a><ng-template #islogout>
+          <h3 class="warning">No access!Please relogin!</h3>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</a><ng-template #islogout>
+  <h3 class="warning">No access!Please relogin!</h3>
+</ng-template>
+//Admin
+<a (click)="getPaidFilmDetails(idFilm, categoryId)" *ngIf="authService.isLoggedIn;else nodataSelected1">
+  <div class="column">
+    <div class="card">
+      <video [src]="selectedPaidItem.trialUrl" controls></video>
+      <div class="container">
+        <h2>{{selectedPaidItem.filmTitle}}</h2>
+        <p>{{selectedPaidItem.categoryName}}</p>
+        <p>{{selectedPaidItem.description}}
+        <h4>It's published in:</h4>
+        <p>{{selectedPaidItem.releaseDate}}</p>
+        <p class="title">{{selectedPaidItem.movieDuration}}</p>
+        <p class="title">{{selectedPaidItem.onlineCost}}</p>
+        <h4>Movie is Sponsored by:</h4>
+        <p class="title">{{selectedFreeItem.filmSponsor}}</p>
+        <button class="button" *ngIf="authService.isLoggedIn;else isLogout" routerLink="/paid/{categoryId}"
+          (click)="deleteItem(idFilm, categoryId)">Delete</button><ng-template #isLogout>
+          <h3 class="warning">Access denied!You can't delete any film!</h3>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</a><ng-template #nodataSelected1>
+  <h3 class="warning">Access denied!Please relogin!</h3>
+</ng-template>

@@ -1,0 +1,26 @@
+<a (click)="getAllCarts()">
+  <table>
+    <thead>
+      <tr>
+        <th>Cart_Id</th>
+        <th>FilmId</th>
+        <th>FilmCost</th>
+        <th>CustomerId</th>
+        <th>Customer_fullName</th>
+        <th>CartItemId</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of  carts">
+        <td>{{cart.cartId}}</td>
+        <td>{{cart.filmId}}</td>
+        <td>{{cart.filmCost}}</td>
+        <td>{{cart.customerId}}</td>
+        <td>{{cart.fullName}}</td>
+        <td>{{cart.IdCartItem}}</td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</a>

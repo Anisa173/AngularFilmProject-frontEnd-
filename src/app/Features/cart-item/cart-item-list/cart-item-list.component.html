@@ -1,0 +1,26 @@
+<a (click)="generateAllCartItemNow(cItemList)">
+  <table>
+    <thead>
+      <tr>
+        <th>CartItem_Id</th>
+        <th>FilmId</th>
+        <th>FilmTitle</th>
+        <th>FilmCost</th>
+        <th>CustomerId</th>
+        <th>SubscribedFilmId</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartItem of  cItemList">
+        <td>{{cartItem.ciId}}</td>
+        <td>{{cartItem.filmId}}</td>
+        <td>{{cartItem.filmTittle}}</td>
+        <td>{{cartItem.onlineCost}}</td>
+        <td>{{cartItem.customerId}}</td>
+        <td>{{cartItem.subscribeFilmId}}</td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</a>

@@ -1,0 +1,6 @@
+<app-film-details *ngIf="film;else noFilmSelected" [filmModified]="film" [idFilm]="film.idFilm"
+  [categoryId]="film.categoryId" (filmForm)="onAdded($event)"></app-film-details><ng-template #noFilmSelected>
+  <h3 class="warning">No Film is done!</h3>
+</ng-template>
+
+<app-film-list (ItemsFree)="film = $event" (ItemsPaid)="film=$event" [categoryId]="film.categoryId"></app-film-list>

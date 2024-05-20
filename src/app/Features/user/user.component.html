@@ -1,0 +1,10 @@
+<app-user-list (selectedUser)="user=$event" *ngIf="auth.isLoggedIn;else noAccess"></app-user-list><ng-template
+  #noAccess>
+  <h3 class="warning">Access denied!!Please login!</h3>
+</ng-template>
+<app-user-details *ngIf="user;else noUserDataUpdated" [userEditable]="user" [id]="user.id"
+  (registrateUser)="onAdded($event)"></app-user-details>
+<ng-template #noUserDataUpdated>
+  <h3 class="warning">No userUpdated is done!</h3>
+</ng-template>
+<app-user-login (userloginDetails)="loginUser"></app-user-login>

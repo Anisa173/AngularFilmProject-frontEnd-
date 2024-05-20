@@ -1,0 +1,46 @@
+<div><a class="list-group-item clearfix" (click)=" onClickItem(pmId)" *ngIf="authService.isLoggedIn;else noAccess">
+    <div class="pull-left">
+      <div *ngIf="payMethod$ | async as payMethod">
+        <h3 class="list-group-item-heading">{{payMethod.pmId}}--{{payMethod.methodAppName}}</h3>
+        <h4 class="list-group-item-text">{{payMethod.urlApp}}</h4>
+        <h4 class="list-group-item-text">{{payMethod.logoAppUrl}}</h4>
+        <h4 class="list-group-item-text">{{payMethod.pmfeeCharged}}</h4>
+        <h4 class="list-group-item-text">{{payMethod.currency}}</h4>
+      </div>
+    </div>
+    <ng-content></ng-content>
+  </a>
+  <button class="delete" (click)="onDelete(pmId)" *ngIf="authService.isLoggedIn;else noAccess">Delete</button>
+</div><ng-template #noAccess>
+  <h3 class="warning">Access Denied</h3>
+</ng-template>
+<div>
+  <a class="list-group-item clearfix" (click)=" onClickItemByUser(pmId)" *ngIf="authService.isLoggedIn;else noAccess">
+    <div class="pull-left">
+      <div *ngIf="payMethod$ | async as payMethod">
+        <h3 class="list-group-item-heading">Pay with {{payMethod.methodAppName}}</h3>
+        <h4 class="list-group-item-text">{{payMethod.logoAppUrl}}</h4>
+        <h4 class="list-group-item-text">{{payMethod.pmfeeCharged}}</h4>
+        <h4 class="list-group-item-text">{{payMethod.currency}}</h4>
+        <a routerLink="stripe/card" class="list-group-item-text">Click here to continue:{{payMethod.urlApp}}</a>
+      </div>
+    </div>
+    <ng-content></ng-content>
+  </a>
+</div>
+
+
+
+
+
+
+
+/*pmId: number;
+methodAppName: string;
+urlApp: string;
+logoAppUrl: string;
+idCart: number;
+filmTittle: string;
+pmfeeCharged: number;
+currency: string;
+admId: number;*/
