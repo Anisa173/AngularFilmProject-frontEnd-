@@ -1,12 +1,19 @@
-<a class="list-group-item clearfix" (click)="onSelected(idCtg)" *ngIf="authS.isLoggedIn;else noData">
+<a class="list-group-item clearfix" (click)="onSelectedByAdmin(idCtg)" *ngIf="authS.isLoggedIn;else noData">
   <div class="pull-left">
 
     <h4 class="list-group-item-heading">Film_Category 'ID' is:{{filmC.idCtg}}</h4>
     <h3 class="list-group-item-text">Film_CategoryName is:{{filmC.categoryName}}</h3>
   </div>
+  <div class="pull-right">
+    <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+    <button type="button" *ngIf="authS.isLoggedIn;else noData" (click)="onDeleted(idCtg)">Delete</button>
+  </div>
 </a><ng-template #noData>
   <h4 class="warning">No data selected!Please login again!</h4>
 </ng-template>
-<div class="pull-right">
-  <button type="button" *ngIf="authS.isLoggedIn;else noData" (click)="onDeleted(idCtg)">Delete</button>
-</div>
+<a class="list-group-item clearfix" (click)="onSelectedByCustomer(idCtg)">
+  <div class="pull-left">
+    <h3 class="list-group-item-text">Film_CategoryName is:{{filmC.categoryName}}</h3>
+    <button type="button" *ngIf="authS.isLoggedIn;else noData" class="btn btn-primary" (click)="goBack()">Back</button>
+  </div>
+</a>

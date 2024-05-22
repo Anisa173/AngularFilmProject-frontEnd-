@@ -1,10 +1,8 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/Shared/models/user';
 import { UserLogin } from 'src/app/Shared/models/user-login';
 import { AuthService } from 'src/app/Shared/services/auth.service';
-import { UserService } from 'src/app/Shared/services/user.service';
 
 @Component({
   selector: 'app-user-login',
@@ -40,7 +38,7 @@ export class UserLoginComponent implements OnInit {
           console.log('Login successfull!');
         },
         error: (error) => {
-          alert('Login failed!');
+          alert('Login failed!Your username or password is incorrect');
           console.error(error);
           this.router.navigate(['user/update/:id'], { relativeTo: this.route });
         },

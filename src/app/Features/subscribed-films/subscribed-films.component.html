@@ -1,6 +1,6 @@
 <app-subscribe-list *ngIf="reviewsFilm;else noReviewFilm" (filmsSubscribed)="reviewsFilm=$event"
-  (freeFilmsSub)="reviewsFilm=$event" (paidFilmsSub)="reviewsFilm=$event" [allFilmsSub]="reviewsFilms"
-  [id]="reviewsFilm.customerId" [idF]="reviewsFilm.filmId"></app-subscribe-list>
+  (freeFilmsSubC)="reviewsFilm=$event" (freeFilmsSubA)="reviewsFilm=$event" (paidFilmsSub)="reviewsFilm=$event"
+  [allFilmsSub]="reviewsFilms" [id]="reviewsFilm.customerId" [idF]="reviewsFilm.filmId"></app-subscribe-list>
 <ng-template #noReviewFilm>
   <h3 class="warning">Reviews are Required*****,No Film is selected!!!</h3>
 </ng-template>

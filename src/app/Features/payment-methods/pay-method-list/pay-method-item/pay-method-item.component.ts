@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { EPayMethods } from 'src/app/Shared/models/e-pay-methods';
 import { AuthService } from 'src/app/Shared/services/auth.service';
 import { PaymentMethodsService } from 'src/app/Shared/services/payment-methods.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-pay-method-item',
   templateUrl: './pay-method-item.component.html',
@@ -22,16 +22,17 @@ export class PayMethodItemComponent implements OnInit {
     private payMService: PaymentMethodsService,
     private route: ActivatedRoute,
     private router: Router,
-    protected authService: AuthService
+    protected authService: AuthService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['pmId'];
-    this.payMethod$ = this.payMService.getPayMethodById(id);
+    this.payMethod$ = this.payMService.getPaymentMethod(id);
   }
   onClickItem(pmId: number) {
-    this.payMService.getPayMethodById(pmId).subscribe(() => {
-      this.itemClickAdmin.emit();
+    this.payMService.getPaymentMethod(pmId).subscribe((payMethod) => {
+      this.itemClickAdmin.emit(payMethod);
     });
   }
   onDelete(pmId: number) {
@@ -42,9 +43,12 @@ export class PayMethodItemComponent implements OnInit {
     });
   }
   onClickItemByUser(pmId: number) {
-    this.payMService.getUserPaymentMethod(pmId).subscribe(() => {
-      this.itemClickUser.emit();
+    this.payMService.getUserPaymentMethod(pmId).subscribe((payMethod) => {
+      this.itemClickUser.emit(payMethod);
       this.router.navigate(['/stripe/card'], { relativeTo: this.route });
     });
+  }
+  goBack() {
+    this.location.back();
   }
 }

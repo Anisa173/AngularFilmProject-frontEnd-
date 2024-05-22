@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 import { FilmCategory } from 'src/app/Shared/models/film-category';
 import { AuthService } from 'src/app/Shared/services/auth.service';
 import { FilmCategoryService } from 'src/app/Shared/services/film-category.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-film-category-item',
   templateUrl: './film-category-item.component.html',
@@ -21,6 +21,7 @@ import { FilmCategoryService } from 'src/app/Shared/services/film-category.servi
 export class FilmCategoryItemComponent implements OnInit, OnChanges {
   @Output() deletedItem = new EventEmitter<void>();
   @Output() itemDetails = new EventEmitter<FilmCategory>();
+  @Output() itemDetailsC = new EventEmitter<FilmCategory>();
   @Input() filmC!: FilmCategory;
   @Input() idCtg!: number;
   filmC$: Observable<FilmCategory> | undefined;
@@ -29,16 +30,22 @@ export class FilmCategoryItemComponent implements OnInit, OnChanges {
     private fcService: FilmCategoryService,
     private route: ActivatedRoute,
     private router: Router,
-    protected authS: AuthService
+    protected authS: AuthService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['idCateg'];
     this.filmC$ = this.fcService.getFilmCategById(id);
   }
-  onSelected(idCateg: number) {
+  onSelectedByAdmin(idCateg: number) {
     this.fcService.getFilmCategById(idCateg).subscribe((filmC) => {
       this.itemDetails.emit(filmC);
+    });
+  }
+  onSelectedByCustomer(idCateg: number) {
+    this.fcService.getFilmCategById(idCateg).subscribe((filmC) => {
+      this.itemDetailsC.emit(filmC);
     });
   }
   onDeleted(idCtg: number) {
@@ -49,6 +56,9 @@ export class FilmCategoryItemComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
+    console.log('Method implemented.');
+  }
+  goBack() {
+    this.location.back();
   }
 }

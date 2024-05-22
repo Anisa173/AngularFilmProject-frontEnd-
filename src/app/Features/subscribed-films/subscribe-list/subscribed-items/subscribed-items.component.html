@@ -1,5 +1,5 @@
-<a [routerLink]="['/reviews/{idFilm}']" (click)="onSelectedByItemFilmReviews(id, idFilm)"
-  *ngIf="authService.isLoggedIn;else noAccess">
+//Admin
+<a (click)="onSelectedByItemFilmReviews(id, idFilm)" *ngIf="authService.isLoggedIn;else noAccess">
   <div class="column">
     <div class="card">
       <div class="container">
@@ -9,14 +9,15 @@
 
         <h3>It's reviews in:</h3>
         <h3 class="title">{{filmSub.reviews}}</h3>
-      </div>
+      </div><button type="button" [routerLink]="['/reviews/{idFilm}']" class="btn btn-primary"
+        (click)="goBack()">Back</button>
     </div>
   </div>
 </a><ng-template #noAccess>
   <h3 class="warning">Access Denied</h3>
 </ng-template>
-<a [routerLink]="['/reviews/{id}']" (click)="onSelectedByItemUserReviews(id, idFilm)"
-  *ngIf="authService.isLoggedIn;else noAccess">
+//Customer
+<a (click)="onSelectedByItemUserReviews(id, idFilm)" *ngIf="authService.isLoggedIn;else noAccess">
   <div class="column">
     <div class="card">
       <div class="container">
@@ -26,24 +27,20 @@
 
         <h3>It's reviews in:</h3>
         <h3 class="title">{{filmSub.reviews}}</h3>
-      </div>
+      </div><button type="button" [routerLink]="['/reviews/{id}']" class="btn btn-primary"
+        (click)="goBack()">Back</button>
     </div>
   </div>
 </a><ng-template #noAccess>
   <h3 class="warning">Access Denied</h3>
 </ng-template>
-
-
-
-
-
-<a [routerLink]="['subscribedFilm/add/free/{userId}/films']" (click)="onSelectedFree(id, idFilm)"
-  *ngIf="authService.isLoggedIn;else noAccess">
+//Admin
+<a (click)="onSelectedFreeByAdmin(id, idFilm)" *ngIf="authService.isLoggedIn;else noAccess">
   <div class="column">
     <div class="card">
       <div class="container">
         <h2>{{filmSub.filmTitle}}</h2>
-        <h4 class="title">{{filmSub.onlineCost}}</h4>
+        <h4 class="title">It's free cost:{{filmSub.onlineCost}}</h4>
         <h4>{{filmSub.fullName}}</h4>
         <h3>It's reviews in:</h3>
         <h3 class="title">{{filmSub.reviews}}</h3>
@@ -51,16 +48,45 @@
     </div>
   </div>
 </a>
-<a [routerLink]="['subscribedFilms/add/paid/{userId}/films']" (click)=" onSelectedPaid(id, idFilm)"
-  *ngIf="authService.isLoggedIn;else noAccess">
+//Customer
+<a (click)="onSelectedFreeByCustomer(id, idFilm)">
   <div class="column">
     <div class="card">
       <div class="container">
         <h2>{{filmSub.filmTitle}}</h2>
-        <h4 class="title">{{filmSub.onlineCost}}</h4>
+        <h4 class="title">It's free cost:{{filmSub.onlineCost}}</h4>
         <h4>{{filmSub.fullName}}</h4>
         <h3>It's reviews in:</h3>
         <h3 class="title">{{filmSub.reviews}}</h3>
+      </div>
+    </div>
+  </div>
+</a>
+
+
+//Admin and Customer
+<a (click)="onSelectedPaid(id, idFilm)" *ngIf="authService.isLoggedIn;else noAccess">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>{{filmSub.filmTitle}}</h2>
+        <h4 class="title">It's Cost:{{filmSub.onlineCost}}</h4>
+        <h4>{{filmSub.fullName}}</h4>
+        <h3>It's reviews in:</h3>
+        <h3 class="title">{{filmSub.reviews}}</h3>
+      </div>
+    </div>
+  </div>
+</a>
+//Customer--enjoy films on Pay
+<a (click)="onSelectedPaidFilmMovie(id, idFilm)" *ngIf="authService.isLoggedIn;else noAccess">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>{{filmSub.filmTitle}}</h2>
+        <h4 class="title">It's Cost:{{filmSub.onlineCost}}</h4>
+        <h3>{{filmSub.filmUrl}}</h3>
+        <h4>{{filmSub.fullName}}</h4>
       </div>
     </div>
   </div>

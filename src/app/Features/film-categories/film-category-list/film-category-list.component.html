@@ -1,11 +1,26 @@
+//Admin
 <main class="cd_main">
   <nav class="navbar">
-    <a href="#" class="navbar-logo">National Film Blog</a>
+    <a class="navbar-logo">National Film Blog</a>
     <ul class="navbar-links">
-      <li class="navbar-dropdown"><a>
+      <li class="navbar-dropdown"><a *ngIf="authService.isLoggedIn;else noAccess">
           <app-film-category-item *ngFor="let filmCategory of filmCtegori" [filmC]="filmCategory"
             (itemDetails)="onCategories(filmCategory)"
             (deletedItem)="deleteItem(filmCtegori)">{{filmCategory.categoryName}}</app-film-category-item></a></li>
+    </ul>
+  </nav>
+</main><ng-template #noAccess>
+  <h3 class="warning">No Access!Loggin again,you are out now!</h3>
+</ng-template>
+
+//Customer
+<main class="cd_main">
+  <nav class="navbar">
+    <a class="navbar-logo">National Film Blog</a>
+    <ul class="navbar-links">
+      <li class="navbar-dropdown"><a>
+          <app-film-category-item *ngFor="let filmCategory of filmCtegori" [filmC]="filmCategory"
+            (itemDetailsC)="onCategories(filmCategory)">{{filmCategory.categoryName}}</app-film-category-item></a></li>
     </ul>
   </nav>
 </main>

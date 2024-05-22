@@ -44,7 +44,8 @@
         <span *ngIf="paymentForm.get('currency')?.touched && paymentForm.get('currency')?.hasError('required')">It's
           required</span>
         <button type="button" *ngIf="authSer.isLoggedIn;else noAccess" [routerLink]="['/paymentmethods/all']"
-          class="registerBtn" [disabled]="!paymentForm.valid" on-click="createPaymentMethod(payMethod)">Create</button>
+          class="registerBtn" [disabled]="!paymentForm.valid" on-click="createPaymentMethod(payMethod)">Add
+          Payment_Method</button>
       </form>
     </div>
   </div>
@@ -97,7 +98,7 @@
         <span *ngIf="paymentForm.get('currency')?.touched && paymentForm.get('currency')?.hasError('required')">It's
           required</span>
         <button type="button" *ngIf="authSer.isLoggedIn;else noAccess" [routerLink]="['/paymentmethods/all']"
-          class="registerBtn" [disabled]="!paymentForm.valid" on-click=" updatePaymentMethodds(payMethod)">Edit</button>
+          class="registerBtn" [disabled]="!paymentForm.valid" on-click="updatePaymentMethodds(payMethod)">Edit</button>
       </form>
     </div>
   </div>

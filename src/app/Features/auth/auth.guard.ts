@@ -5,7 +5,6 @@ import {
   Route,
   Router,
   UrlSegment,
-  UrlTree,
 } from '@angular/router';
 import { AuthService } from '../../Shared/services/auth.service';
 

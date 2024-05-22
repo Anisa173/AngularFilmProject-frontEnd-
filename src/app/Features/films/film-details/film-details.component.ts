@@ -71,7 +71,7 @@ export class FilmDetailsComponent implements OnInit, OnChanges {
   updateFilm(filmModified: Films) {
     this.fService.updateDataFilm(filmModified).subscribe((filmModified) => {
       alert('Datas are modified!');
-      this.router.navigate(['/read/:categoryId/films'], {
+      this.router.navigate(['/read/{categoryId}/films'], {
         relativeTo: this.route,
       });
     });

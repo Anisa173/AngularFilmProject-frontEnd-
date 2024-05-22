@@ -7,11 +7,12 @@
         <h4 class="list-group-item-text">{{payMethod.pmfeeCharged}}</h4>
         <h4 class="list-group-item-text">{{payMethod.currency}}</h4>
       </div>
-    </div>
-    <ng-content></ng-content>
+    </div> <button class="delete" (click)="onDelete(pmId)"
+      *ngIf="authService.isLoggedIn;else noAccess">Delete</button><button type="button" class="btn btn-primary"
+      (click)="goBack()">Back</button>
   </a>
-  <button class="delete" (click)="onDelete(pmId)" *ngIf="authService.isLoggedIn;else noAccess">Delete</button>
-</div><ng-template #noAccess>
+</div>
+<ng-template #noAccess>
   <h3 class="warning">Access Denied</h3>
 </ng-template>
 <div>
@@ -22,10 +23,12 @@
         <h4 class="list-group-item-text">{{payMethod.logoAppUrl}}</h4>
         <h4 class="list-group-item-text">{{payMethod.pmfeeCharged}}</h4>
         <h4 class="list-group-item-text">{{payMethod.currency}}</h4>
-        <a routerLink="stripe/card" class="list-group-item-text">Click here to continue:{{payMethod.urlApp}}</a>
+        <a routerLink="stripe/card" *ngIf="authService.isLoggedIn;else noAccess" class="list-group-item-text">Click here
+          to continue:{{payMethod.urlApp}}</a>
+        <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
       </div>
     </div>
-    <ng-content></ng-content>
+
   </a>
 </div>
 

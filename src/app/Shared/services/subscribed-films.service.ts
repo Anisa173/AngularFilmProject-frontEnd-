@@ -31,45 +31,55 @@ export class SubscribedFilmsService {
     return this.httpCl.get<SubscribedFilms[]>('${this.baseUrl}/read/all');
   }
   getFilmReviewsByUserId(
-    id: number,
-    idFilm: number
+    _id: number,
+    _idFilm: number
   ): Observable<SubscribedFilms> {
     return this.httpCl.get<SubscribedFilms>(
       '${this.baseUrl}/read/{id}/{idFilm}'
     );
   }
 
-  getAllFreeSubscribedFilmById(id: number): Observable<SubscribedFilms[]> {
+  getAllFreeSubscribedFilmById(_id: number): Observable<SubscribedFilms[]> {
     return this.httpCl.get<SubscribedFilms[]>(
       '${this.baseUrl}/read/free/${id}'
     );
   }
-  getAllPaidSubscribedFilmsById(id: number): Observable<SubscribedFilms[]> {
-    return this.httpCl.get<SubscribedFilms[]>('${this.baseUrl}/read/paid/{id}');
+  getAllPaidSubscribedFilmsById(_id: number): Observable<SubscribedFilms[]> {
+    return this.httpCl.get<SubscribedFilms[]>(
+      '${this.baseUrl}/read/paid/${id}'
+    );
   }
 
   getSubscribedFreeFilmByUserId(
-    id: number,
-    idFilm: number
+    _id: number,
+    _idFilm: number
   ): Observable<SubscribedFilms> {
     return this.httpCl.get<SubscribedFilms>(
       '${this.baseUrl}/read/free/${id}/${idFilm}'
     );
   }
+
   getSubscribedPaidFilmByUserId(
-    id: number,
-    idFilm: number
+    _id: number,
+    _idFilm: number
   ): Observable<SubscribedFilms> {
     return this.httpCl.get<SubscribedFilms>(
       '${this.baseUrl}/read/paid/${id}/${idFilm}'
     );
   }
-  getAllReviewsByFilmId(idFilm: number): Observable<SubscribedFilms[]> {
+
+  getAllReviewsByFilmId(_idFilm: number): Observable<SubscribedFilms[]> {
     return this.httpCl.get<SubscribedFilms[]>(
       '${this.baseUrl}/reviews/${idFilm}'
     );
   }
-  getAllReviewsByUserId(id: number): Observable<SubscribedFilms[]> {
+  getAllReviewsByUserId(_id: number): Observable<SubscribedFilms[]> {
     return this.httpCl.get<SubscribedFilms[]>('${this.baseUrl}/reviews/${id}');
+  }
+
+  getPaidFilmUrl(_id: number, _idFilm: number): Observable<SubscribedFilms> {
+    return this.httpCl.get<SubscribedFilms>(
+      '${this.basrUrl}/live/${id}/${idFilm}'
+    );
   }
 }

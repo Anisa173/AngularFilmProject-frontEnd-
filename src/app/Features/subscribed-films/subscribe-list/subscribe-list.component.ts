@@ -17,7 +17,8 @@ import { SubscribedFilmsService } from 'src/app/Shared/services/subscribed-films
 })
 export class SubscribeListComponent implements OnInit, OnChanges {
   @Output() filmsSubscribed = new EventEmitter<SubscribedFilms>();
-  @Output() freeFilmsSub = new EventEmitter<SubscribedFilms>();
+  @Output() freeFilmsSubC = new EventEmitter<SubscribedFilms>();
+  @Output() freeFilmsSubA = new EventEmitter<SubscribedFilms>();
   @Output() paidFilmsSub = new EventEmitter<SubscribedFilms>();
   @Input() id!: number;
   @Input() idF!: number;
@@ -41,13 +42,23 @@ export class SubscribeListComponent implements OnInit, OnChanges {
         this.filmsSubscribed.emit(filmSubscripted);
       });
   }
-  selectedFreeSub(id: number, filmSubscripted: SubscribedFilms) {
+  //Customer,Admin
+  selectedFreeSubscriptionC(id: number, filmSubscripted: SubscribedFilms) {
     this.reviewFilmService
       .getAllFreeSubscribedFilmById(id)
       .subscribe((_filmSubscripted) => {
-        this.freeFilmsSub.emit(filmSubscripted);
+        this.freeFilmsSubC.emit(filmSubscripted);
       });
   }
+  selectedFreeSubscriptionA(filmSubscripted: SubscribedFilms) {
+    this.reviewFilmService
+      .getAllSubscribedFilmById()
+      .subscribe((_filmSubscripted) => {
+        this.freeFilmsSubA.emit(filmSubscripted);
+      });
+  }
+
+  //Customer
   selectedPaidSub(id: number, filmSubscripted: SubscribedFilms) {
     this.reviewFilmService
       .getAllPaidSubscribedFilmsById(id)
@@ -55,6 +66,7 @@ export class SubscribeListComponent implements OnInit, OnChanges {
         this.paidFilmsSub.emit(filmSubscripted);
       });
   }
+  //Customer
   selectFilmsReviewsByUserId(id: number, filmSubscripted: SubscribedFilms) {
     this.reviewFilmService
       .getAllReviewsByUserId(id)
@@ -62,6 +74,7 @@ export class SubscribeListComponent implements OnInit, OnChanges {
         this.filmsSubscribed.emit(filmSubscripted);
       });
   }
+  // Admin
   selectedUserReviewsByFilmId(idF: number) {
     this.reviewFilmService
       .getAllReviewsByFilmId(idF)

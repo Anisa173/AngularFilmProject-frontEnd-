@@ -14,19 +14,20 @@ export class FilmService {
   createFilms(film: Films): Observable<Films> {
     return this.httpCl.post<Films>('${this.apiUrl}/create/{categoryId}', film);
   }
-
-  updateFilm(f: Films): Observable<Films> {
+  updateDataFilm(film: Films): Observable<Films> {
     return this.httpCl.put<Films>(
-      '${this.apiUrl}/update/${categoryId}/films',
-      f
+      '${this.apiUrl}/update/{categoryId}/{idFilm}',
+      film
     );
   }
-
   getFilmDetailsByCategory(
     _categoryId: number,
     _idFilm: number
   ): Observable<Films> {
-    return this.httpCl.get<Films>('${this.apiUrl}/${categoryId}/films');
+    return this.httpCl.get<Films>('${this.apiUrl}/${categoryId}/{idFilm}');
+  }
+  getFilmCategoryById(_categoryId: number, _idFilm: number): Observable<Films> {
+    return this.httpCl.get<Films>('${this.apiUrl}/read/{categoryId}/{idFilm}');
   }
 
   getFreeFilmDetailsById(
@@ -43,16 +44,9 @@ export class FilmService {
     return this.httpCl.get<Films>('${this.apiUrl}/paid/{categoryId}/{idFilm}');
   }
 
-  updateDataFilm(film: Films): Observable<Films> {
-    return this.httpCl.put<Films>(
-      '${this.apiUrl}/update/${categoryId}/films',
-      film
-    );
-  }
-
   deleteFilm(_idFilm: number, _categoryId: number): Observable<void> {
     return this.httpCl.delete<void>(
-      '${this.apiUrl}/delete/${categoryId}/films'
+      '${this.apiUrl}/delete/{categoryId}/{filmId}'
     );
   }
 
@@ -66,5 +60,8 @@ export class FilmService {
 
   getPaidFilmsByCategory(categoryId: number): Observable<Films[]> {
     return this.httpCl.get<Films[]>('${this.apiUrl}/paid/${categoryId}');
+  }
+  getAllFilms(): Observable<Films[]> {
+    return this.httpCl.get<Films[]>('${this.apiUrl}/all');
   }
 }

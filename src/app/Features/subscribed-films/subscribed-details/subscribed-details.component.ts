@@ -32,7 +32,7 @@ export class SubscribedDetailsComponent implements OnInit {
     this.reviewService
       .createFilmFreeReview(reviewFilm)
       .subscribe((reviewFilm) => {
-        alert('Thank you for your points!');
+        alert('Thanks for your points!');
         this.location.back();
         this.addReviews.emit(reviewFilm);
       });
@@ -41,7 +41,7 @@ export class SubscribedDetailsComponent implements OnInit {
     this.reviewService
       .createFilmPaidReview(reviewFilm)
       .subscribe((reviewFilm) => {
-        alert('Thank you for your points!');
+        alert('Thanks for your points!');
         this.location.back();
         this.addReviews.emit(reviewFilm);
       });

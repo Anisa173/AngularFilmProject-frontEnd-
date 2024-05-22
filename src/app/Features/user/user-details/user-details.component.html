@@ -80,7 +80,7 @@
           <option value="#2">Customer</option>
         </select>
         <button type="button" [routerLink]="['/userRole']" class="registerBtn" [disabled]="!RegistrationForm.valid"
-          on-click="createAccount(fullName.value,email.value,password.value, telephoneNo.value,address.value,gender.value,userRole.value, personalIdentityNo.value,age.value)">Submit</button>
+          on-click="createAccount(userEditable)">Submit</button>
         <!--  <div class="container signIn">
           <p>Already have an account?<a [routerLink]="['user/login']">Sign in</a></p>
         </div>-->

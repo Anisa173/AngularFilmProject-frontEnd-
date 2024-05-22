@@ -27,7 +27,10 @@ export class PaymentMethodsService {
     return this.httpClient.get<EPayMethods>('${this.baseUrl}/all');
   }
   getPayMethodById(_pmId: number): Observable<EPayMethods> {
-    return this.httpClient.get<EPayMethods>('${this.baseUrl}/{id}');
+    return this.httpClient.get<EPayMethods>('${this.baseUrl}/{pmId}');
+  }
+  getPaymentMethod(_pmId: number): Observable<EPayMethods> {
+    return this.httpClient.get<EPayMethods>('{this.baseUrl}/read/${pmId}');
   }
   getCartPaymentMethod(_pmId: number): Observable<EPayMethods> {
     return this.httpClient.get<EPayMethods>('${this.baseUrl}/fetch/${pmId}');

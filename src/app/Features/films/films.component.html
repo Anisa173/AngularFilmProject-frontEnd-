@@ -3,4 +3,6 @@
   <h3 class="warning">No Film is done!</h3>
 </ng-template>
 
-<app-film-list (ItemsFree)="film = $event" (ItemsPaid)="film=$event" [categoryId]="film.categoryId"></app-film-list>
+<app-film-list (ItemsFreeA)="film = $event" (ItemsFreeC)="film=$event" (ItemsPaidA)="film=$event"
+  (ItemsPaidC)="film=$event" (ItemsC)="film=$event" (ItemsA)="film=$event" [allFreeItems]="films" [allPaidItems]="films"
+  [allItemSelected]="films" [categoryId]="film.categoryId"></app-film-list>

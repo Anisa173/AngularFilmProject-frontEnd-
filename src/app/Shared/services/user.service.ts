@@ -11,28 +11,8 @@ export class UserService {
   user!: User;
   constructor(private http: HttpClient) {}
 
-  register(
-    fullName: string,
-    email: string,
-    password: string,
-    telephoneNo: string,
-    address: string,
-    gender: string,
-    userRole: string,
-    personalIdentityNo: string,
-    age: number
-  ): Observable<User> {
-    return this.http.post<User>('${this.apiUrl}/register', {
-      fullName: fullName,
-      email: email,
-      password: password,
-      telephoneNo: telephoneNo,
-      address: address,
-      gender: gender,
-      userRole: userRole,
-      personalIdentityNo: personalIdentityNo,
-      age: age,
-    });
+  register(user: User): Observable<User> {
+    return this.http.post<User>('${this.apiUrl}/register', user);
   }
 
   updateAccount(user: User): Observable<User> {

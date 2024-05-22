@@ -16,7 +16,7 @@ import {
   providedIn: 'root',
 })
 export class AuthService implements CanActivate {
-  private apiUrl = 'http://locahost:8080/api/auth';
+  private apiUrl = 'http://locahost:8080/api/auth/user';
 
   constructor(
     private http: HttpClient,
@@ -35,7 +35,7 @@ export class AuthService implements CanActivate {
       return true;
     }
     // navigate to login page as user is not authenticated
-    this.router.navigate(['/userlogin/login']);
+    this.router.navigate(['auth/user/login']);
     return false;
   }
   public isLoggedIn(): boolean {

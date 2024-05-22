@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { NgxStripeModule } from 'ngx-stripe';
-import { HeaderComponent } from './Features/header/header.component';
 import { UserComponent } from './Features/user/user.component';
 import { UserService } from './Shared/services/user.service';
 import { AuthService } from './Shared/services/auth.service';
@@ -57,12 +56,11 @@ import { CartComponent } from './Features/cart/cart.component';
 import { CartDetailsComponent } from './Features/cart/cart-details/cart-details.component';
 import { CartListComponent } from './Features/cart/cart-list/cart-list.component';
 import { PaymentCardComponent } from './Features/payment/payment-card/payment-card.component';
-import { HomepageComponent } from './homepage/homepage.component';
-
+import { HomepageComponent } from './Features/homepage/homepage.component';
+import { StripeService } from './Shared/services/stripe.service';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     UserComponent,
     UserLoginComponent,
     UserListComponent,
@@ -120,6 +118,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     SubscribedFilmsService,
     CartItemService,
     CartService,
+    StripeService,
     FilmCategoryService,
     ActorsService,
     {

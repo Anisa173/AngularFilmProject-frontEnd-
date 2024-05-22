@@ -1,20 +1,78 @@
+//ADMIN--free Films
 <div class="dropdown">
-  <ul class="dropdown-menu" aria-labelledBy="dropdownMnu1">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMenu1">
+    <li><a *ngIf="authService.isLoggedIn;else noAccess">
+        <app-film-item *ngFor="let itemFilm of allFreeItems" [selectedFreeItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemFreeSelected)=" onSelectedFreeFilmsAdmin(itemFilm,categoryId)"
+          (deletedItem)=" onDeletedFree(allFreeItems)">
+          {{itemFilm.filmTitle}}
+        </app-film-item>
+      </a></li>
+  </ul>
+</div><ng-template #noAccess>
+  <h3 class="warning">Please login!Access denied!</h3>
+</ng-template>
+//CUSTOMER --free Films
+<div class="dropdown">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMenu1">
     <li><a>
-        <app-film-item *ngFor="let itemFilm of allItemSelected" [selectedFreeItem]="itemFilm" [idFilm]="itemFilm.idFilm"
-          [categoryId]="itemFilm.categoryId" (itemFreeSelected)="onSelectedFreeFilms(itemFilm,categoryId)"
+        <app-film-item *ngFor="let itemFilm of allFreeItems" [selectedFreeItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemFreeSelectedC)="  onSelectedFreeFilmsCustomer(itemFilm,categoryId)">
+          {{itemFilm.filmTitle}}
+        </app-film-item>
+      </a></li>
+  </ul>
+</div><ng-template #noAccess>
+  <h3 class="warning">Please login!Access denied!</h3>
+</ng-template>
+//CUSTOMER--paid
+<div class="dropdown">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMenu1">
+    <li><a>
+        <app-film-item *ngFor="let itemFilm of allPaidItems" [selectedPaidItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemPaidSelected)=" onSelectedPaidFilmsCustomer(itemFilm,categoryId)">
+          {{itemFilm.filmTitle}}
+        </app-film-item>
+      </a></li>
+  </ul>
+</div><ng-template #notAuth>
+  <h3 class="warning">No Access!</h3>
+</ng-template>
+//ADMIN--paid
+<div class="dropdown">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMenu1">
+    <li><a *ngIf="authService.isLoggedIn;else noAccess">
+        <app-film-item *ngFor="let itemFilm of allPaidItems" [selectedPaidItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemPaidSelected)=" onSelectedPaidFilmsAdmin(itemFilm,categoryId)"
+          (deletedItem)="onDeletedPaid(allPaidItems)">
+          {{itemFilm.filmTitle}}
+        </app-film-item>
+      </a></li>
+  </ul>
+</div><ng-template #notAuth>
+  <h3 class="warning">No Access!</h3>
+</ng-template>
+
+//ADMIN
+<div class="dropdown">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMenu1">
+    <li><a *ngIf="authService.isLoggedIn; else notAuth">
+        <app-film-item *ngFor="let itemFilm of allItemSelected" [selectItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemSelected)="onSelectedFilmsAdmin(itemFilm,categoryId)"
           (deletedItem)="onDeleted(allItemSelected)">
           {{itemFilm.filmTitle}}
         </app-film-item>
       </a></li>
   </ul>
-</div>
+</div><ng-template #notAuth>
+  <h3 class="warning">No Access!</h3>
+</ng-template>
+//CUSTOMER
 <div class="dropdown">
-  <ul class="dropdown-menu" aria-labelledBy="dropdownMnu1">
-    <li><a *ngIf="authService.isLoggedIn; else notAuth">
-        <app-film-item *ngFor="let itemFilm of allItemSelected" [selectedPaidItem]="itemFilm" [idFilm]="itemFilm.idFilm"
-          [categoryId]="itemFilm.categoryId" (itemPaidSelected)="onSelectedPaidFilms(itemFilm,categoryId)"
-          (deletedItem)="onDeleted(allItemSelected)">
+  <ul class="dropdown-menu" aria-labelledBy="dropdownMenu1">
+    <li><a>
+        <app-film-item *ngFor="let itemFilm of allItemSelected" [selectItem]="itemFilm" [idFilm]="itemFilm.idFilm"
+          [categoryId]="itemFilm.categoryId" (itemSelected)="onSelectedFilmsCustomer(itemFilm,categoryId)">
           {{itemFilm.filmTitle}}
         </app-film-item>
       </a></li>

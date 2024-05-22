@@ -16,7 +16,7 @@ export class UserRoleComponent {
   @ViewChild('choice') choice = NgForm;
 
   goFreeFilms($event: Films[]) {
-    this.router.navigate(['Films/{categoryId}'], { relativeTo: this.route });
+    this.router.navigate(['Films/all'], { relativeTo: this.route });
   }
 
   navigatoToPayFilms($event: UserLogin) {

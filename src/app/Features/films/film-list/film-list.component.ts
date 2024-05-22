@@ -19,10 +19,18 @@ import { FilmService } from 'src/app/Shared/services/film.service';
   styleUrls: ['./film-list.component.css'],
 })
 export class FilmListComponent implements OnInit, OnChanges {
-  @Output() ItemsFree = new EventEmitter<Films>();
-  @Output() ItemsPaid = new EventEmitter<Films>();
-  allItemSelected!: Films[];
+  @Output() ItemsFreeA = new EventEmitter<Films>();
+  @Output() ItemsFreeC = new EventEmitter<Films>();
+  @Output() ItemsPaidA = new EventEmitter<Films>();
+  @Output() ItemsPaidC = new EventEmitter<Films>();
+  @Output() ItemsC = new EventEmitter<Films>();
+  @Output() ItemsA = new EventEmitter<Films>();
+  @Input() allFreeItems!: Films[];
+  @Input() allPaidItems!: Films[];
+  @Input() allItemSelected!: Films[];
   allItemSelected$: Observable<Films[]> | undefined;
+  allFreeItems$: Observable<Films[]> | undefined;
+  allPaidItems$: Observable<Films[]> | undefined;
   @Input() categoryId!: number;
   itemFilm!: Films;
   selectedFilm: Films | undefined;
@@ -35,31 +43,69 @@ export class FilmListComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
+    console.log('Method is implemented.');
   }
   ngOnInit(): void {
-    ('Method implemented successfully.');
-    this.route.snapshot.params['categoryId'];
-    this.allItemSelected$ = this.filmService.getFilmsByCategory(
-      this.categoryId
-    );
+    console.log('Method implemented successfully.');
+    const categoryId = this.route.snapshot.params['categoryId'];
+    this.allItemSelected$ = this.filmService.getFilmsByCategory(categoryId);
+    this.allFreeItems$ = this.filmService.getFreeFilmsBycategory(categoryId);
+    this.allPaidItems$ = this.filmService.getPaidFilmsByCategory(categoryId);
   }
-  onSelectedFreeFilms(itemFilm: Films, categoryId: number) {
+  onSelectedFreeFilmsAdmin(itemFilm: Films, categoryId: number) {
     this.filmService
       .getFreeFilmsBycategory(categoryId)
       .subscribe((_itemFilm) => {
-        this.ItemsFree.emit(itemFilm);
+        this.ItemsFreeA.emit(itemFilm);
       });
   }
-  onSelectedPaidFilms(itemFilm: Films, categoryId: number) {
+  onSelectedFreeFilmsCustomer(itemFilm: Films, categoryId: number) {
     this.filmService
-      .getPaidFilmsByCategory(categoryId)
+      .getFreeFilmsBycategory(categoryId)
       .subscribe((_itemFilm) => {
-        this.ItemsPaid.emit(itemFilm);
+        this.ItemsFreeC.emit(itemFilm);
       });
   }
 
-  onDeleted(allItemSelected: Films[]) {
+  onSelectedPaidFilmsAdmin(itemFilm: Films, categoryId: number) {
+    this.filmService
+      .getPaidFilmsByCategory(categoryId)
+      .subscribe((_itemFilm) => {
+        this.ItemsPaidA.emit(itemFilm);
+      });
+  }
+  onSelectedPaidFilmsCustomer(itemFilm: Films, categoryId: number) {
+    this.filmService
+      .getPaidFilmsByCategory(categoryId)
+      .subscribe((_itemFilm) => {
+        this.ItemsPaidC.emit(itemFilm);
+      });
+  }
+
+  onSelectedFilmsAdmin(itemFilm: Films, categoryId: number) {
+    this.filmService.getFilmsByCategory(categoryId).subscribe((_itemFilm) => {
+      this.ItemsA.emit(itemFilm);
+    });
+  }
+  onSelectedFilmsCustomer(itemFilm: Films, categoryId: number) {
+    this.filmService.getFilmsByCategory(categoryId).subscribe((_itemFilm) => {
+      this.ItemsC.emit(itemFilm);
+    });
+  }
+
+  onDeletedFree(_allFreeItems: Films[]) {
+    this.allFreeItems = this.allFreeItems.filter(
+      ($event) => $event != this.selectedFilm
+    );
+    this.selectedFilm = undefined;
+  }
+  onDeletedPaid(_allPaidItems: Films[]) {
+    this.allPaidItems = this.allPaidItems.filter(
+      ($event) => $event != this.selectedFilm
+    );
+    this.selectedFilm = undefined;
+  }
+  onDeleted(_allItemSelected: Films[]) {
     this.allItemSelected = this.allItemSelected.filter(
       ($event) => $event != this.selectedFilm
     );

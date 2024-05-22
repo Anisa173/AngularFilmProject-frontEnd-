@@ -17,16 +17,6 @@ export class ActorsService {
       }
     );
   }
-  private convertToEntity(actor: Actors): Actors {
-    return {
-      idAct: actor.idAct,
-      fullName: actor.fullName,
-      biography: actor.biography,
-      imageUrl: actor.imageUrl,
-      grades: actor.grades,
-      filmsId: actor.filmsId,
-      filmTitle: actor.filmTitle,
-    };
-  }
+
   updateActor() {}
 }

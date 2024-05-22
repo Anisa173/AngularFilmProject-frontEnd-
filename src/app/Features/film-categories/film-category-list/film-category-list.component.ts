@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FilmCategory } from 'src/app/Shared/models/film-category';
+import { AuthService } from 'src/app/Shared/services/auth.service';
 import { FilmCategoryService } from 'src/app/Shared/services/film-category.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class FilmCategoryListComponent implements OnInit {
   @Input() filmCtegori!: FilmCategory[];
   @Input() filmCategory!: FilmCategory;
   deletedCategory: FilmCategory | undefined;
-  constructor(private fcService: FilmCategoryService) {}
+  constructor(
+    private fcService: FilmCategoryService,
+    protected authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.fcService.getAllCategories();

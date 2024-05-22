@@ -16,6 +16,7 @@
   <button type="button" name="submit" (click)="addFreeReview(reviewFilm)">My Points</button>
 
 </form>
+
 <form #filmReview="ngForm" (ngSubmit)="onSubmit(filmReview)">
   <h3>I think it was a great film.Give your points below!</h3>
   <select id="points" name="reviews" [value]="reviewFilm.reviews" ngModel required #review="ngModel">

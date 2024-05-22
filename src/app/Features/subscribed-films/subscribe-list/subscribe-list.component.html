@@ -1,6 +1,10 @@
 <app-subscribed-items *ngFor="let filmSubscripted of allFilmsSub"
-  (filmSubscribed)="selectedItemsByAdmin(filmSubscripted)" (filmFreeSubscribed)="selectedFreeSub(id,filmSubscripted)"
-  (filmPaidSubscribed)="selectedPaidSub(id, filmSubscripted)" [filmSub]="filmSubscripted"
-  [filmFreeSub]="filmSubscripted" [filmPaidSub]="filmSubscripted" [id]="filmSubscripted.customerId"
-  [idFilm]="filmSubscripted.filmId" (filmSubscribed)="selectFilmsReviewsByUserId(id,filmSubscripted)"
-  (filmPaidSubscribed)="selectedUserReviewsByFilmId(idF)"></app-subscribed-items>
+  (filmSubscribedReview)="selectedItemsByAdmin(filmSubscripted)"
+  (filmFreeSubscribedC)="selectedFreeSubscriptionC(id,filmSubscripted)"
+  (filmFreeSubscribedA)="selectedFreeSubscriptionA(filmSubscripted)"
+  (filmPaidSubscribed)="selectedPaidSub(id, filmSubscripted)" (filmPaidSub)="selectedPaidSub(id, filmSubscripted)"
+  [filmFreeSub]="filmSubscripted" [filmPaidSubReview]="filmSubscripted" [filmSub]="filmSubscripted"
+  [filmPaidSubric]="filmSubscribed" [id]="filmSubscripted.customerId" [idFilm]="filmSubscripted.filmId"
+  (filmSubscribedReview)="selectFilmsReviewsByUserId(id,filmSubscripted)"
+  (filmSubscribedReview)="selectedUserReviewsByFilmId(idF)">
+</app-subscribed-items>

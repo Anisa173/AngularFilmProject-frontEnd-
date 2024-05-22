@@ -147,34 +147,12 @@ export class UserDetailsComponent implements OnChanges, OnInit {
   onSubmit() {
     console.log(this.RegistrationForm.value);
   }
-  createAccount(
-    fullName: string,
-    email: string,
-    password: string,
-    telephoneNo: string,
-    address: string,
-    gender: string,
-    userRole: string,
-    personalIdentityNo: string,
-    age: number
-  ) {
-    this.userService
-      .register(
-        fullName,
-        email,
-        password,
-        telephoneNo,
-        address,
-        gender,
-        userRole,
-        personalIdentityNo,
-        age
-      )
-      .subscribe((userEditable) => {
-        alert('Registration successfull!');
-        this.router.navigate(['/useRole'], { relativeTo: this.route });
-        this.registrateUser.emit(userEditable);
-      });
+  createAccount(userEditable: User) {
+    this.userService.register(userEditable).subscribe((userEditable) => {
+      alert('Registration successfull!');
+      this.router.navigate(['/useRole'], { relativeTo: this.route });
+      this.registrateUser.emit(userEditable);
+    });
   }
 
   ngOnChanges(): void {

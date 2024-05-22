@@ -1,5 +1,6 @@
 <a class="list-group-item clearfix" (click)="onItemClick(id)" *ngIf="authService.isLoggedIn;else noAccess"
   routerLink="user/update/{id}">
+
   <div class="pull-left">
     <div *ngIf="user$ | async as user">
       <h3 class="list-group-item-heading">{{userI.fullName}}</h3>

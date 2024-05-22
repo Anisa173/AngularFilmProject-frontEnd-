@@ -98,7 +98,7 @@ export class PayMethodDetailsComponent implements OnInit, OnChanges {
         });
       });
   }
-  updatePaymentMethodds(payMethod: EPayMethods) {
+  updatePaymentMethods(payMethod: EPayMethods) {
     this.payMethodService.update(payMethod).subscribe((payMethod) => {
       alert('This record is updated correctly!');
       this.router.navigate(['paymentmethods/read/{pmId}'], {
