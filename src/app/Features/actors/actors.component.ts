@@ -9,4 +9,8 @@ import { Actors } from 'src/app/Shared/models/actors';
 export class ActorsComponent {
   actor!: Actors;
   actora!: Actors[];
+
+  onAdded($event: Actors) {
+    this.actora.push($event);
+  }
 }

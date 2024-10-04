@@ -1,1 +1,99 @@
-<p>actor-details works!</p>
+<div class="container text-center">
+  <h1 class="display-5">Registration Form of ACTORS</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form [formGroup]="actorsForm" (ngSubmit)="onSubmit()">
+        <label for="fName">Fullname:</label>
+        <input type="text" id="fName" formControlName="fullName" class="form-control" placeHolder="Jane Nilson Doe"
+          required>
+        <span *ngIf="actorsForm.get('fullName')?.touched && actorsForm.get('fullName')?.invalid">It's not
+          writen in correct form</span>
+
+        <span *ngIf="actorsForm.get('fullName')?.touched && actorsForm.get('fullName')?.hasError('required')">It's
+          required</span>
+
+        <label for="desc">Write a little about actor's biography</label>
+        <textarea id="desc" formControlName="biography" class="form-control" required></textarea>
+        <span *ngIf="actorsForm.get('biography')?.hasError('required') && !actorsForm.get('biography')?.pristine">It's
+          required</span>
+        <span *ngIf="actorsForm.get('biography')?.dirty && actorsForm.get('biography')?.invalid">It's not written
+          in regular form</span>
+
+
+        <label for="URL">Put imageUrl:</label>
+        <input type="text" formControlName="imageUrl" id="URL" class="form-control"
+          pattern="/^https?:\/\/(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif))$/i" required>
+        <span *ngIf="actorsForm.get('imageUrl')?.dirty && actorsForm.get('imageUrl')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="actorsForm.get('imageUrl')?.touched && actorsForm.get('imageUrl')?.hasError('required')">It's
+          required</span>
+
+        <label for="grades">Grades</label>
+        <input type="text" formControlName="grades" id="grades" class="form-control" required>
+        <span *ngIf="actorsForm.get('grades')?.dirty && actorsForm.get('grades')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="actorsForm.get('grades')?.touched && actorsForm.get('grades')?.hasError('required')">It's
+          required</span>
+
+        <label for="fTitle">Choose the film it belongs to:</label>
+        <select type="text" formControlName="filmTitle" id="fTitle" required>
+          <option *ngFor="let film of films" [value]="film.idFilm">{{film.filmTitle}}</option>
+        </select>
+        <button type="button" [routerLink]="['/all/:filmId']" class="registerBtn" [disabled]="!actorsForm.valid"
+          *ngIf="authService.isLoggedIn;else noAccess" on-click=" addActor(actor)">Add a new Actor</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <h1 class="display-5">Update a record of Actor</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form [formGroup]="actorsForm" (ngChange)="onSubmit()">
+        <label for="fName">Fullname:</label>
+        <input type="text" id="fName" formControlName="fullName" class="form-control" placeHolder="Jane Nilson Doe"
+          required>
+        <span *ngIf="actorsForm.get('fullName')?.touched && actorsForm.get('fullName')?.invalid">It's not
+          writen in correct form</span>
+
+        <span *ngIf="actorsForm.get('fullName')?.touched && actorsForm.get('fullName')?.hasError('required')">It's
+          required</span>
+
+        <label for="desc">Write a little about actor's biography</label>
+        <textarea id="desc" formControlName="biography" class="form-control" required></textarea>
+        <span *ngIf="actorsForm.get('biography')?.hasError('required') && !actorsForm.get('biography')?.pristine">It's
+          required</span>
+        <span *ngIf="actorsForm.get('biography')?.dirty && actorsForm.get('biography')?.invalid">It's not written
+          in regular form</span>
+
+
+        <label for="URL">Put imageUrl:</label>
+        <input type="text" formControlName="imageUrl" id="URL" class="form-control"
+          pattern="/^https?:\/\/(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif))$/i" required>
+        <span *ngIf="actorsForm.get('imageUrl')?.dirty && actorsForm.get('imageUrl')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="actorsForm.get('imageUrl')?.touched && actorsForm.get('imageUrl')?.hasError('required')">It's
+          required</span>
+
+        <label for="grades">Grades</label>
+        <input type="text" formControlName="grades" id="grades" class="form-control" required>
+        <span *ngIf="actorsForm.get('grades')?.dirty && actorsForm.get('grades')?.invalid">It's
+          invalid!</span>
+        <span *ngIf="actorsForm.get('grades')?.touched && actorsForm.get('grades')?.hasError('required')">It's
+          required</span>
+
+        <label for="fTitle">Choose the film it belongs to:</label>
+        <select type="text" formControlName="filmTitle" id="fTitle" required>
+          <option *ngFor="let film of films" [value]="film.idFilm">{{film.filmTitle}}</option>
+        </select>
+        <button type="button" class="registerBtn" [disabled]="!actorsForm.valid"
+          [routerLink]="['/retrieve/${idFilm}/actors']" *ngIf="authService.isLoggedIn;else noAccess"
+          on-click="updateAct(actor)">Add a new
+          Actor</button>
+        <ng-template #noAccess>
+          <h3 class="warning">Access denied!Please Login!</h3>
+        </ng-template>
+      </form>
+    </div>
+  </div>
+</div>

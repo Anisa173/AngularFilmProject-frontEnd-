@@ -1,1 +1,43 @@
-<p>actor-item works!</p>
+//Customer
+<a (click)="onSelectActorByCustomer(actorId, filmId)" *ngIf="authService.isLoggedIn;else islogout">
+  <div class="column">
+    <div class="card">
+      <img [src]="actorRecord.imageUrl" controls>
+      <div class="container">
+        <h2>{{actorRecord.fullName}}</h2>
+        <p>{{actorRecord.biography}}</p>
+        <p class="title">{{actorRecord.filmTitle}}</p>
+        <h3 class="title">Grades: {{actorRecord.grades}}</h3>
+
+        <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+        <ng-template #islogout>
+          <h3 class="warning">No access!Please relogin!</h3>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</a><ng-template #islogout>
+
+  <h3 class="warning">No access!Please relogin!</h3>
+</ng-template>
+//Admin
+<a (click)="onSelectActorByAdmin(actorId, filmId)" *ngIf="authService.isLoggedIn;else nodataSelected1">
+  <div class="column">
+    <div class="card">
+      <img [src]="actorRecord.imageUrl" alt="">
+      <div class="container">
+        <h2>{{actorRecord.fullName}}</h2>
+        <p>{{actorRecord.biography}}</p>
+        <p class="title">{{actorRecord.filmTitle}}</p>
+        <h3 class="title">Grades: {{actorRecord.grades}}</h3>
+        <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+        <button class="button" *ngIf="authService.isLoggedIn;else isLogout" routerLink="/all/${idFilm}"
+          (click)=" deleteItem(actorId, filmId)">Delete</button><ng-template #isLogout>
+          <h3 class="warning">Access denied!You can't delete any film!</h3>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</a><ng-template #nodataSelected1>
+  <h3 class="warning">Access denied!Please relogin!</h3>
+</ng-template>

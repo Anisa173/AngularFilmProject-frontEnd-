@@ -5,5 +5,6 @@ export interface SubscribedFilms {
   fullName: string;
   filmId: number;
   filmTitle: string;
+  filmUrl: string;
   onlineCost: number;
 }

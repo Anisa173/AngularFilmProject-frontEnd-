@@ -98,7 +98,7 @@
         <span *ngIf="paymentForm.get('currency')?.touched && paymentForm.get('currency')?.hasError('required')">It's
           required</span>
         <button type="button" *ngIf="authSer.isLoggedIn;else noAccess" [routerLink]="['/paymentmethods/all']"
-          class="registerBtn" [disabled]="!paymentForm.valid" on-click="updatePaymentMethodds(payMethod)">Edit</button>
+          class="registerBtn" [disabled]="!paymentForm.valid" on-click="updatePaymentMethods(payMethod)">Edit</button>
       </form>
     </div>
   </div>

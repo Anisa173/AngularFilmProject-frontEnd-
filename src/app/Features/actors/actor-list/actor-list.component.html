@@ -1,1 +1,3 @@
-<app-actor-item></app-actor-item>
+<app-actor-item *ngFor="let actorFilmi of actorsF" (actorDetailsA)="onSelectedItems(idFilm, actorFilmi)"
+  (actorDetailsC)="onSelectedItems(idFilm, actorFilmi)" (actorDeleted)="onDeleted(actorsF)" [actorRecord]="actorFilm"
+  [filmId]="actorFilm.filmsId"></app-actor-item>

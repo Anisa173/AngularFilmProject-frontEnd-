@@ -1,0 +1,44 @@
+.container::after .row::after {
+  content: " ";
+  clear: both;
+  display: table;
+}
+.column {
+  float: left;
+  width: 40%;
+  margin-bottom: 16px;
+  padding: 0px 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 15px;
+  padding: 10px;
+}
+.container {
+  padding: 0 16px;
+}
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.button:hover {
+  background-color: #120202;
+  box-shadow: 4px 6px 3px rgb(58, 53, 53);
+  scale: 1.01;
+  color: rgb(234, 217, 217);
+  font-size: 22px;
+  font-family: "Times New Roman", Times, serif;
+}

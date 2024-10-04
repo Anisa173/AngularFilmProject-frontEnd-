@@ -1,2 +1,6 @@
-<app-actor-details></app-actor-details>
-<app-actor-list></app-actor-list>
+<app-actor-details *ngIf="actor;else noActorSelect" (newActor)="onAdded($event)"
+  [actor]="actor"></app-actor-details><ng-template #noActorSelect>
+  <h3 class="warning">No access!</h3>
+</ng-template>
+<app-actor-list (actorList)="actor=$event" [actorFilm]="actor" [actorsF]="actora"
+  [idFilm]="actor.filmsId"></app-actor-list>

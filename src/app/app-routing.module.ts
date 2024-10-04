@@ -35,7 +35,10 @@ import { CartDetailsComponent } from './Features/cart/cart-details/cart-details.
 import { CartListComponent } from './Features/cart/cart-list/cart-list.component';
 import { PaymentComponent } from './Features/payment/payment.component';
 import { PaymentCardComponent } from './Features/payment/payment-card/payment-card.component';
-
+import { ActorsComponent } from './Features/actors/actors.component';
+import { ActorDetailsComponent } from './Features/actors/actor-details/actor-details.component';
+import { ActorItemComponent } from './Features/actors/actor-list/actor-item/actor-item.component';
+import { ActorListComponent } from './Features/actors/actor-list/actor-list.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -43,13 +46,17 @@ const routes: Routes = [
     children: [
       { path: '/register', component: UserDetailsComponent },
       {
-        path: '/update/:id',
+        path: '/update/${id}',
         component: UserDetailsComponent,
         canActivate: [authGuard],
       },
-      { path: ':id', component: UserItemComponent, canActivate: [authGuard] },
       {
-        path: '/delete/:id',
+        path: '/${id}',
+        component: UserItemComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: '/delete/${id}',
         component: UserItemComponent,
         canActivate: [authGuard],
       },
@@ -62,11 +69,15 @@ const routes: Routes = [
   { path: 'userRole', redirectTo: 'user/login', pathMatch: 'full' },
   { path: '', component: HomepageComponent },
   { path: '/auth/user/login', redirectTo: '/homePage', pathMatch: 'full' },
-  { path: '', component: CustomerComponent },
-  { path: 'user/:id', redirectTo: 'homepage', pathMatch: 'full' },
-  { path: '', component: AdminComponent },
-  { path: 'user/:id', redirectTo: 'homepage', pathMatch: 'full' },
-  { path: 'user/delete/:id', redirectTo: 'homepage/admin', pathMatch: 'full' },
+  { path: 'user', component: CustomerComponent },
+  { path: 'user/${id}', redirectTo: 'homepage', pathMatch: 'full' },
+  { path: 'user', component: AdminComponent },
+  { path: 'user/${id}', redirectTo: 'homepage', pathMatch: 'full' },
+  {
+    path: 'user/delete/${id}',
+    redirectTo: 'homepage/admin',
+    pathMatch: 'full',
+  },
   { path: 'user/all', redirectTo: 'homepage/admin', pathMatch: 'full' },
   { path: '/all', redirectTo: '/homepage' },
   {
@@ -75,11 +86,11 @@ const routes: Routes = [
     children: [
       { path: '/create', component: FilmCategoryDetailsComponent },
       {
-        path: '/read/:id',
+        path: '/read/${id}',
         component: FilmCategoryItemComponent,
       },
       {
-        path: '/delete/:id',
+        path: '/delete/${id}',
         component: FilmCategoryItemComponent,
         canActivate: [authGuard],
       },
@@ -93,13 +104,13 @@ const routes: Routes = [
   { path: 'FilmCategory/create', redirectTo: '/admin', pathMatch: 'full' },
   { path: 'FilmCategory/delete', redirectTo: '/admin', pathMatch: 'full' },
   {
-    path: 'FilmCategory/read/:id',
+    path: 'FilmCategory/read/${id}',
     redirectTo: 'homepage/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: 'FilmCategory/read/:id',
+    path: 'FilmCategory/read/${id}',
     redirectTo: 'homepage/customer',
     pathMatch: 'full',
   },
@@ -119,92 +130,92 @@ const routes: Routes = [
     component: FilmsComponent,
     children: [
       {
-        path: '/create/:categoryId',
+        path: '/create/${categoryId}',
         component: FilmDetailsComponent,
         canActivate: [authGuard],
       },
       {
-        path: '/update/:categoryId/:idFilm',
+        path: '/update/${categoryId}/${idFilm}',
         component: FilmDetailsComponent,
         canActivate: [authGuard],
       },
       {
-        path: '/delete/:categoryId/:filmId',
+        path: '/delete/${categoryId}/${filmId}',
         component: FilmItemComponent,
         canActivate: [authGuard],
       },
       {
-        path: '/:categoryId/:idFilm',
+        path: '/${categoryId}/${idFilm}',
         component: FilmItemComponent,
         canActivate: [authGuard],
       },
-      { path: '/free/:categoryId/:idFilm', component: FilmItemComponent },
-      { path: '/paid/:categoryId/:idFilm', component: FilmItemComponent },
-      { path: '/free/:categoryId', component: FilmListComponent },
-      { path: '/paid/:categoryId', component: FilmListComponent },
-      { path: '/:categoryId', component: FilmListComponent },
+      { path: '/free/${categoryId}/${idFilm}', component: FilmItemComponent },
+      { path: '/paid/${categoryId}/${idFilm}', component: FilmItemComponent },
+      { path: '/free/${categoryId}', component: FilmListComponent },
+      { path: '/paid/${categoryId}', component: FilmListComponent },
+      { path: '/${categoryId}', component: FilmListComponent },
     ],
   },
   {
-    path: '/delete/:categoryId/:filmId',
+    path: '/delete/${categoryId}/${filmId}',
     redirectTo: '/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/:categoryId/:idFilm',
+    path: '/${categoryId}/${idFilm}',
     redirectTo: 'homepage/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/free/:categoryId/:idFilm',
+    path: '/free/${categoryId}/${idFilm}',
     redirectTo: 'homepage/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/free/:categoryId/:idFilm',
+    path: '/free/${categoryId}/${idFilm}',
     redirectTo: 'homepage/customer',
     pathMatch: 'full',
   },
   {
-    path: '/paid/:categoryId/:idFilm',
+    path: '/paid/${categoryId}/${idFilm}',
     redirectTo: 'homepage',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/free/:categoryId/',
+    path: '/free/${categoryId}/',
     redirectTo: 'homepage/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/paid/:categoryId',
+    path: '/paid/${categoryId}',
     redirectTo: 'homepage/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/:categoryId',
+    path: '/${categoryId}',
     redirectTo: 'homepage/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
 
   {
-    path: '/free/:categoryId/',
+    path: '/free/${categoryId}/',
     redirectTo: 'homepage/customer',
     pathMatch: 'full',
   },
   {
-    path: '/paid/:categoryId',
+    path: '/paid/${categoryId}',
     redirectTo: 'homepage/customer',
     pathMatch: 'full',
   },
   {
-    path: '/:categoryId',
+    path: '/${categoryId}',
     redirectTo: 'homepage/customer',
     pathMatch: 'full',
   },
@@ -213,79 +224,82 @@ const routes: Routes = [
     component: SubscribedFilmsComponent,
     children: [
       {
-        path: '/add/free/:userId/films',
+        path: '/add/free/${userId}/films',
         component: SubscribedDetailsComponent,
       },
       {
-        path: '/add/paid/:userId/films',
+        path: '/add/paid/${userId}/films',
         component: SubscribedDetailsComponent,
       },
       {
-        path: '/read/:id/:idFilm',
+        path: '/read/${id}/${idFilm}',
         component: SubscribedItemsComponent,
         canActivate: [authGuard],
       },
-      { path: '/read/free/:id/:idFilm', component: SubscribedItemsComponent },
       {
-        path: '/read/paid/:id/:idFilm',
+        path: '/read/free/${id}/${idFilm}',
+        component: SubscribedItemsComponent,
+      },
+      {
+        path: '/read/paid/${id}/${idFilm}',
         component: SubscribedItemsComponent,
         canActivate: [authGuard],
       },
-      { path: '/live/:id/:idFilm', component: SubscribedFilmsComponent },
+      { path: '/live/${id}/{idFilm}', component: SubscribedFilmsComponent },
       {
         path: '/read/all',
         component: SubscribeListComponent,
         canActivate: [authGuard],
       },
-      { path: '/read/free/:id', component: SubscribeListComponent },
+      { path: '/read/free/${id}', component: SubscribeListComponent },
       {
-        path: '/read/paid/:id',
+        path: '/read/paid/${id}',
         component: SubscribeListComponent,
         canActivate: [authGuard],
       },
-      { path: 'reviews/:idFilm', component: SubscribeListComponent },
-      { path: '/reviews/:id', component: SubscribeListComponent },
+      { path: 'reviews/${idFilm}', component: SubscribeListComponent },
+      { path: '/reviews/${id}', component: SubscribeListComponent },
     ],
   },
   {
-    path: '/add/free/:userId/films',
+    path: '/add/free/${userId}/films',
     redirectTo: '/customer',
     pathMatch: 'full',
   },
   {
-    path: '/add/paid/:userId/films',
+    path: '/add/paid/${userId}/films',
     redirectTo: '/customer',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/read/free/:id/:idFilm',
+    path: '/read/free/${id}/${idFilm}',
     redirectTo: '/customer',
     pathMatch: 'full',
   },
   {
-    path: '/read/free/:id/:idFilm',
+    path: '/read/free/${id}/${idFilm}',
     redirectTo: '/admin',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   {
-    path: '/live/:id/:idFilm',
+    path: '/live/${id}/${idFilm}',
     redirectTo: '/customer',
     pathMatch: 'full',
     canActivate: [authGuard],
   },
   { path: '/read/all', redirectTo: '/admin', pathMatch: 'full' },
-  { path: '/read/free/:id', redirectTo: '/customer', pathMatch: 'full' },
-  { path: '/read/paid/:id', redirectTo: '/customer', pathMatch: 'full' },
-  { path: 'reviews/:idFilm', redirectTo: '/admin', pathMatch: 'full' },
-  { path: '/reviews/:id', redirectTo: '/customer', pathMatch: 'full' },
+  { path: '/read/free/${id}', redirectTo: '/customer', pathMatch: 'full' },
+  { path: '/read/paid/${id}', redirectTo: '/customer', pathMatch: 'full' },
+  { path: 'reviews/${idFilm}', redirectTo: '/admin', pathMatch: 'full' },
+  { path: '/reviews/${id}', redirectTo: '/customer', pathMatch: 'full' },
   {
     path: 'CartItem',
     component: CartItemComponent,
     children: [
       { path: '/add', component: CartItemDetailComponent },
-      { path: '/:ciId', component: CartItemDetailComponent },
+      { path: '/${ciId}', component: CartItemDetailComponent },
       { path: '/all', component: CartItemListComponent },
     ],
   },
@@ -293,9 +307,12 @@ const routes: Routes = [
     path: 'cart',
     component: CartComponent,
     children: [
-      { path: '/:id/cartItem/paymentMethods', component: CartDetailsComponent },
       {
-        path: '/:cartId/user.cartItem/paymentMethods',
+        path: '/${id}/cartItem/paymentMethods',
+        component: CartDetailsComponent,
+      },
+      {
+        path: '/${cartId}/user/cartItem/paymentMethods',
         component: CartDetailsComponent,
       },
       { path: '/all', component: CartListComponent },
@@ -312,22 +329,22 @@ const routes: Routes = [
         canActivate: [authGuard],
       },
       {
-        path: '/update/:pmId',
+        path: '/update/${pmId}',
         component: PayMethodDetailsComponent,
         canActivate: [authGuard],
       },
       {
-        path: '/read/:pmId',
+        path: '/read/${pmId}',
         component: PayMethodItemComponent,
         canActivate: [authGuard],
       },
       {
-        path: '/delete/:pmId',
+        path: '/delete/${pmId}',
         component: PayMethodItemComponent,
         canActivate: [authGuard],
       },
       {
-        path: 'read/:id/paymentMethod',
+        path: 'read/${id}/paymentMethod',
         component: PayMethodItemComponent,
         canActivate: [authGuard],
       },
@@ -339,11 +356,11 @@ const routes: Routes = [
     ],
   },
   { path: '/create', redirectTo: '/admin', pathMatch: 'full' },
-  { path: '/update/:pmId', redirectTo: '/admin', pathMatch: 'full' },
-  { path: '/delete/:pmId', redirectTo: '/admin', pathMatch: 'full' },
-  { path: '/read/:pmId', redirectTo: '/admin', pathMatch: 'full' },
+  { path: '/update/${pmId}', redirectTo: '/admin', pathMatch: 'full' },
+  { path: '/delete/${pmId}', redirectTo: '/admin', pathMatch: 'full' },
+  { path: '/read/${pmId}', redirectTo: '/admin', pathMatch: 'full' },
   {
-    path: 'read/:id/paymentMethod',
+    path: 'read/${id}/paymentMethod',
     redirectTo: '/customer',
     pathMatch: 'full',
   },
@@ -352,12 +369,69 @@ const routes: Routes = [
     component: PaymentComponent,
     children: [
       {
-        path: '/:id/paymentMethods/cart/cartItem',
+        path: '/${id}/paymentMethods/cart/cartItem',
         component: PaymentCardComponent,
       },
-      { path: '/cartId', component: PaymentCardComponent },
+      { path: '/${cartId}', component: PaymentCardComponent },
     ],
   },
+  {
+    path: 'actors',
+    component: ActorsComponent,
+    children: [
+      {
+        path: '/create/${categoryId}/${idFilm}',
+        component: ActorDetailsComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: '/update/${idFilm}/${actorId}',
+        component: ActorDetailsComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: '/delete/${idFilm}/${actorId}',
+        component: ActorItemComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: '/retrieve/${idFilm}/actors',
+        component: ActorItemComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: '/all/${idFilm}',
+        component: ActorListComponent,
+        canActivate: [authGuard],
+      },
+    ],
+  },
+  {
+    path: '/create/${categoryId}/${idFilm}',
+    redirectTo: '/admin',
+    pathMatch: 'full',
+  },
+  {
+    path: '/update/${idFilm}/${actorId}',
+    redirectTo: '/admin',
+    pathMatch: 'full',
+  },
+  {
+    path: '/delete/${idFilm}/${actorId}',
+    redirectTo: '/admin',
+    pathMatch: 'full',
+  },
+  {
+    path: '/retrieve/${idFilm}/actors',
+    redirectTo: '/homepage/admin',
+    pathMatch: 'full',
+  },
+  {
+    path: '/retrieve/${idFilm}/actors',
+    redirectTo: '/homepage/customer',
+    pathMatch: 'full',
+  },
+  { path: '/all/${idFilm}', redirectTo: 'homepage/admin', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 //canActivate: [authGuard]
