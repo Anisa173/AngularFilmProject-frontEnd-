@@ -83,7 +83,7 @@ export class FilmItemComponent implements OnInit {
     this.fService
       .getPaidFilmDetailsById(idFilm, categoryId)
       .subscribe((selectedItem) => {
-        this.itemPaidSelected.emit(selectedItem);
+        this.itemSelected.emit(selectedItem);
       });
   }
   goBack() {
