@@ -23,7 +23,7 @@ export class ActorsService {
   }
 
   deleteFilmActor(_idFilm: number, _actorId: number): Observable<void> {
-    return this.httpC.delete<void>('${this.apiUrl}/delete/${idFilm}/actors');
+    return this.httpC.delete<void>('${this.apiUrl}/delete/${idFilm}/${actorsId}');
   }
   getAllActorsByFilmId(_idFilm: number): Observable<Actors[]> {
     return this.httpC.get<Actors[]>('${this.apiUrl}/all/${idFilm}');
