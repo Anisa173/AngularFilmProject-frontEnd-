@@ -28,13 +28,13 @@ export class UserService {
   }
 
   getUserDetails(id: number): Observable<User> {
-    return this.http.get<User>('${this.apiUrl}/location/{id}');
+    return this.http.get<User>('${this.apiUrl}/location/${id}');
   }
   getUserItem(id: number): Observable<User> {
     return this.http.get<User>('${this.apiUrl}/${id}');
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>('$(this.apiUrl)/delete/{id}');
+    return this.http.delete<void>('$(this.apiUrl)/delete/${id}');
   }
 }

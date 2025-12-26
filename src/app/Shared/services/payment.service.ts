@@ -14,12 +14,12 @@ export class PaymentService {
 
   addPayment(pay: Payment): Observable<Payment> {
     return this.httpService.post<Payment>(
-      '${this.baseUrl}/{id}/paymentMethods/cart/cartitem',
+      '${this.baseUrl}/${id}/paymentMethods/cart/cartitem',
       pay
     );
   }
 
   checkout(pay: Payment): Observable<Payment> {
-    return this.httpService.post<Payment>('${this.baseUrl}/{cartId}', pay);
+    return this.httpService.post<Payment>('${this.baseUrl}/${cartId}', pay);
   }
 }

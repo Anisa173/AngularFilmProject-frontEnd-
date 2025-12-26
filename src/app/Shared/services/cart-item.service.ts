@@ -18,6 +18,6 @@ export class CartItemService {
     return this.httpClient.get<CartItem[]>('${this.baseUrl}/all');
   }
   getCartItemById(_ciId: number): Observable<CartItem> {
-    return this.httpClient.get<CartItem>('${this.baseUrl}/{ciId}');
+    return this.httpClient.get<CartItem>('${this.baseUrl}/${ciId}');
   }
 }

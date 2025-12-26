@@ -20,7 +20,7 @@ export class ActorsService {
 
   updateActor(actor: Actors): Observable<Actors> {
     return this.httpC.patch<Actors>(
-      '${this.apiUrl}/update/{idFilm}/{actorId}',
+      '${this.apiUrl}/update/${idFilm}/${actorId}',
       actor
     );
   }

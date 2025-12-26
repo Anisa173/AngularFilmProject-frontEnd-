@@ -18,7 +18,7 @@ export class PaymentMethodsService {
   }
   update(pm: EPayMethods): Observable<EPayMethods> {
     return this.httpClient.put<EPayMethods>(
-      '${this.baseUrl}/update/{pmId}',
+      '${this.baseUrl}/update/${pmId}',
       pm
     );
   }
@@ -27,10 +27,10 @@ export class PaymentMethodsService {
     return this.httpClient.get<EPayMethods>('${this.baseUrl}/all');
   }
   getPayMethodById(_pmId: number): Observable<EPayMethods> {
-    return this.httpClient.get<EPayMethods>('${this.baseUrl}/{pmId}');
+    return this.httpClient.get<EPayMethods>('${this.baseUrl}/${pmId}');
   }
   getPaymentMethod(_pmId: number): Observable<EPayMethods> {
-    return this.httpClient.get<EPayMethods>('{this.baseUrl}/read/${pmId}');
+    return this.httpClient.get<EPayMethods>('${this.baseUrl}/read/${pmId}');
   }
   getCartPaymentMethod(_pmId: number): Observable<EPayMethods> {
     return this.httpClient.get<EPayMethods>('${this.baseUrl}/fetch/${pmId}');
