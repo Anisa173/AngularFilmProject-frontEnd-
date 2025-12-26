@@ -11,10 +11,7 @@ export class ActorsService {
 
   createActor(actor: Actors): Observable<Actors> {
     return this.httpC.post<Actors>(
-      '${this.apiUrl}/create/${categoryId}/${idFilm}',
-      {
-        actor,
-      }
+      '${this.apiUrl}/create/${categoryId}/${idFilm}', actor
     );
   }
 
