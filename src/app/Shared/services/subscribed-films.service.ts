@@ -35,7 +35,7 @@ export class SubscribedFilmsService {
     _idFilm: number
   ): Observable<SubscribedFilms> {
     return this.httpCl.get<SubscribedFilms>(
-      '${this.baseUrl}/read/{id}/{idFilm}'
+      '${this.baseUrl}/read/${id}/${idFilm}'
     );
   }
 
