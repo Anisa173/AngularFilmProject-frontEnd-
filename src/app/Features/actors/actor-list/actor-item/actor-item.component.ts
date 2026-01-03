@@ -30,15 +30,15 @@ export class ActorItemComponent implements OnInit {
   ngOnInit(): void {
     const idF = this.route.snapshot.params['filmId'];
     const actId = this.route.snapshot.params['actorId'];
-    this.actorRecord$ = this.aService.getActorFilmById(idF, actId);
+    this.actorRecord$ = this.aService.getActorByFilmId(idF, actId);
   }
   onSelectActorByAdmin(actorId: number, filmId: number) {
-    this.aService.getActorFilmById(actorId, filmId).subscribe((actorRecord) => {
+    this.aService.getActorByFilmId(actorId, filmId).subscribe((actorRecord) => {
       this.actorDetailsA.emit(actorRecord);
     });
   }
   onSelectActorByCustomer(actorId: number, filmId: number) {
-    this.aService.getActorFilmById(actorId, filmId).subscribe((actorRecord) => {
+    this.aService.getActorByFilmId(actorId, filmId).subscribe((actorRecord) => {
       this.actorDetailsC.emit(actorRecord);
     });
   }
