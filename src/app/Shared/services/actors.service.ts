@@ -32,7 +32,7 @@ export class ActorsService {
   getActorFilmById(_actorId: number, _idFilm: number): Observable<Actors> {
     return this.httpC.get<Actors>('${this.apiUrl}/${idFilm}/${actorId}');
   }
-  getActorByFilmId(_actorId: number, _idFilm: number): Observable<Actors[]> {
-    return this.httpC.get<Actors[]>('${this.apiUrl}/retrieve/${idFilm}/{actorId}');
+  getActorByFilmId(_actorId: number, _idFilm: number): Observable<Actors> {
+    return this.httpC.get<Actors>('${this.apiUrl}/retrieve/${idFilm}/{actorId}');
   }
 }
