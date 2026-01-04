@@ -87,7 +87,7 @@
           <option *ngFor="let film of films" [value]="film.idFilm">{{film.filmTitle}}</option>
         </select>
         <button type="button" class="registerBtn" [disabled]="!actorsForm.valid"
-          [routerLink]="['/retrieve/${idFilm}/actors']" *ngIf="authService.isLoggedIn;else noAccess"
+          [routerLink]="['/retrieve/${idFilm}/${actorId}']" *ngIf="authService.isLoggedIn;else noAccess"
           on-click="updateAct(actor)">Add a new
           Actor</button>
         <ng-template #noAccess>
