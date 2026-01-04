@@ -121,7 +121,7 @@ export class ActorDetailsComponent implements OnInit {
     this.actorService.updateActor(actor).subscribe(() => {
       prompt("A new Actor's data is updated successfully");
       this.router.navigate([
-        '/retrieve/${idFilm}/actors',
+        '/retrieve/${idFilm}/{actorId}',
         { relativeTo: this.route },
       ]);
     });
