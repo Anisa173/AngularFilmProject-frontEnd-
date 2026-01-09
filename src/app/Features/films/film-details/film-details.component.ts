@@ -62,7 +62,7 @@ export class FilmDetailsComponent implements OnInit, OnChanges {
   addFilm(filmModified: Films) {
     this.fService.createFilms(filmModified).subscribe((filmModified) => {
       alert(' Film Registration is done !');
-      this.router.navigate(['Films/{categoryId}'], {
+      this.router.navigate(['Films/${categoryId}'], {
         relativeTo: this.route,
       });
       this.filmForm.emit(filmModified);
